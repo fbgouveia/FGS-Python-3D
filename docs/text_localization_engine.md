@@ -46,3 +46,10 @@ O usuário clica. O texto é alterado em tempo real no Web App (React). Ele apro
 
 ## 4. O Sistema HTML 5 (A Carta na Manga)
 O usuário relatou ter templates HTML5 maravilhosos. O Frontend (React/Playwright) pode perfeitamente abrir esses HTMLs em um servidor *Headless* invisível (sem tela), injetar o texto alterado pelo usuário via JavaScript nativo, e extrair (renderizar) aquilo em vídeo Alpha só o pedaço animado antes mesmo de mandar pro Blender. Absolutamente vanguardista!
+
+## 5. O Teto de Qualidade: As 3 Vias de Geração
+Nós sempre daremos independência ao usuário. Se o método Sanduíche for muito simples, o sistema terá **3 Motores Opcionais** para renderização a escolha técnica:
+
+1. **A Via Base (O Sanduíche 2D):** A mais veloz (~10 segundos). Vídeo WebM Vazio + Placa de Texto gerada no Python em cima. (Use cases: Lower Thirds estáticos, Barras simples).
+2. **A Via Adobe (Nexrender Serverless):** Se a tipografia for super complexa (Ex: fogo lambendo a letra, texto virando vidro), nós enviamos um json para um Servidor com o motor de After Effects instalado silenciosamente. Ele renderiza a `.aep` com o texto embutido com maestria total, salva e devolve o vídeo ao Blender.
+3. **A Via Paramétrica (Blender 100% Native):** Se o usuário *quiser* ou a nossa IA julgar que 2D não serve pro clima, nós usamos o Blender. Ele criará as Letras em `Text Object` 3D (malha real), ativará emissão de Neon, quebrará a letra ou aplicará a física do Geometry Nodes. Esta é a opção suprema que demora mais tempo (Render pesado Cycles), mas gera tipografia **físcamente fundida** na cena, que interage com sombras e luzes dos B-Rolls nas mesmas matrizes matemáticas. Não tem como diferenciar de um estúdio de Hollywood.
