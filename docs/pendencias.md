@@ -20,6 +20,7 @@
  EIXO 5 → Projetos Piloto         (provar cada template com um projeto real)
  EIXO 6 → Pipeline de Produção    (workflow do briefing ao render)
  EIXO 7 → White Label Ready       (produto empacotado para venda)
+ EIXO 8 → Adobe Automations       (ferramentas auxiliares Ae/Pr/Ps)
 ```
 
 ---
@@ -625,6 +626,7 @@ FASE FINAL (White Label):
 | **Documentação** | README + Docs + Bíblia | ✅ Completo | 100% |
 | **Pipeline Áudio** | ElevenLabs + Rhubarb + Blender | ✅ Código pronto | 80% |
 | **Infrastructure** | White Label (I1-I6) | 🔵 Fase final | 0% |
+| **Automações Adobe** | Eixo 8 (AE/PR/PS Scripts) | 🔵 Não iniciado | 0% |
 | **TOTAL GERAL** | | **Em evolução** | **~35%** |
 
 ---
