@@ -1,0 +1,48 @@
+# BOOMER & KEV — EPISÓDIO 01: "Esse Negócio de IA"
+# Diálogo para geração de voz via ElevenLabs
+# Formato: PERSONAGEM: texto da fala | [pausa em segundos após a fala]
+# Linhas com # são comentários — ignoradas pelo script
+# Ações entre [colchetes] = sem fala, apenas para referência da animação
+
+# ─────────────────────────────────────────────────────────────
+# CENA 01: WS — Estabelecimento (0:00 - 0:03)
+# [ANIMAÇÃO: Sinal ON AIR acende, câmera revela estúdio]
+# ─────────────────────────────────────────────────────────────
+
+# CENA 02: MCU Boomer (0:03 - 0:06)
+BOOMER: Cara, tô te falando... esse negócio de inteligência artificial tá me deixando doido. | [0.8]
+
+# CENA 03: REACT Kev (0:06 - 0:08)
+# [ANIMAÇÃO: Kev reage com expressão exagerada, orelhas para cima]
+
+# CENA 04: OTS Boomer — Kev fala (0:08 - 0:12)
+KEV: Doido? Boomer, ela é a melhor coisa que aconteceu na humanidade! | [0.5]
+
+# CENA 05: MCU Boomer cético (0:12 - 0:15)
+BOOMER: Melhor coisa? Meu filho, na minha época, a gente consultava PESSOAS. | [0.6]
+
+# CENA 06: OTS Kev — Boomer fala (0:15 - 0:18)
+KEV: [riso rápido] Boomer... você usa GPS ou não usa? | [0.4]
+
+# CENA 07: Cutaway cômico (0:18 - 0:20)
+# [ANIMAÇÃO: Close no copo de café do Boomer — câmera no detalhe]
+
+# CENA 08: ECU Boomer — pausa dramática (0:20 - 0:22)
+BOOMER: GPS é diferente. | [0.3]
+
+# CENA 09: MCU Kev responde rápido (0:22 - 0:25)
+KEV: Não é diferente! GPS É inteligência artificial! | [0.5]
+
+# CENA 10: WS/MCU Boomer assimilando (0:25 - 0:27)
+BOOMER: Então tô usando IA faz vinte anos e não sabia? | [1.0]
+
+# [ANIMAÇÃO: Os dois rindo absurdamente juntos]
+
+# CENA 11: MCU Kev para a câmera — breaking fourth wall (0:27 - 0:30)
+KEV: É exatamente assim que começa toda conversa com o Boomer. | [0.8]
+
+# ─────────────────────────────────────────────────────────────
+# FIM DO EPISÓDIO 01
+# Total: ~30 segundos
+# Falas: Boomer (4 falas) + Kev (4 falas)
+# ─────────────────────────────────────────────────────────────

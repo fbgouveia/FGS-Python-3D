@@ -1,0 +1,30 @@
+# Blender / Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.blend1
+*.blend2
+
+# Renders e Saídas pesadas
+/renders/
+/audio/sfx/
+/audio/music/
+/audio/voice/
+*.mp4
+*.avi
+*.png
+*.jpg
+*.wav
+*.mp3
+
+# Arquivos de Sistema e IDE
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Variáveis Virtuais / Segredos
+.env
+.venv/
+venv/
+env/
