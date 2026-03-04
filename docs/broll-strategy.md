@@ -29,11 +29,11 @@ A regra visual de ouro do B-Roll Engine é a **Ancoragem Literal**.
       - **"VFX Overlay"** (Mantém a psicóloga no vídeo e renderiza o Blender com fundo Transparente – *Alpha Channel* – para chover partículas e objetos brilhantes literalmente do lado dela na edição).
 2. **Painel Front-End (Visual Timeline)**:
    - *O pulo do gato para o produto vendável:* O sistema não apenas cospe uma lista de textos. O Front-End exibirá uma **Timeline de Vídeo Interativa**.
-   - No painel, o usuário verá o vídeo original rolando e marcações (ex: `00:01:24 - Inserir VFX Ansiedade [Alpha]`, `00:02:10 - Corte Seco B-Roll Depressão [Block]`).
-   - O usuário tem o poder de arrastar essas sugestões, aceitar (dar o *Approve*) ou simplesmente mudar o B-Roll gerado.
+   - No painel, o usuário verá o vídeo original rolando e marcações (ex: `00:01:24 - Inserir VFX Ansiedade [Alpha]`).
+   - *Sugestões Secundárias da IA (The Editor's Copilot):* A IA nunca dá apenas uma opção cravada em pedra. Se o usuário clicar na marcação "VFX Ansiedade", a IA sugere 3 alternativas para aquele momento exato (ex: 1. `Panela de Pressão Tremendo`, 2. `Relógio Tic-Tac Acelerado`, 3. `Termômetro Estourando`). O criador pode alterar a sugestão com um clique, e o sistema refaz a aprovação.
 3. **Ingestão Auditiva e Transcrição Cênica**: 
    - O sistema usa a transcrição de áudio não apenas para a leganda, mas para mapear o *Timing Perfeito* usando os carimbos de tempo (timestamps) de cada palavra-chave falada.
-2. **LLM Concept Simplifier**:
+4. **LLM Concept Simplifier**:
    - Um prompt do GPT/Claude altamente treinado analisa a frase.
    - *Prompt interno:* "Você é um diretor de arte popular. Transforme o conceito X num objeto cotidiano único isolado num fundo escuro sendo afetado pelas leis da física."
 5. **Conversão para Código Python (Blender)**:
