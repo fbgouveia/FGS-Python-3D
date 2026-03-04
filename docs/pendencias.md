@@ -58,22 +58,12 @@ PASSOS:
 5. O script vai listar as vozes disponíveis
 ```
 
-### P3 — Definir e Configurar as Vozes dos Personagens
+### P3 — Testar Pipeline de Áudio (ElevenLabs + Rhubarb)
 ```
-STATUS: ⛔ Pendente (depende de P2)
-RESPONSÁVEL: Felipe + Agente
-TEMPO ESTIMADO: 20 minutos
-
-PASSOS:
-1. No ElevenLabs → Speech Synthesis → Voice Library
-2. Testar vozes e escolher:
-   - BOOMER: voz grave, masculina, 40-55 anos (ex: Charlie, George)
-   - KEV: voz jovem, energética, 20-28 anos (ex: Liam, Josh)
-3. Copiar os Voice IDs de cada voz escolhida
-4. Editar: scripts\utils\elevenlabs_voice_gen.py
-   - Linha ~60: "voice_id": "ID_DO_BOOMER"
-   - Linha ~80: "voice_id": "ID_DO_KEV"
-5. Teste: python scripts\utils\elevenlabs_voice_gen.py --test "Olá!" --char boomer
+STATUS: ✅ Concluído
+RESPONSÁVEL: Agente
+TEMPO ESTIMADO: 0 minutos
+PASSOS: Pipeline validado. O sistema roda com ElevenLabs via Python e o Rhubarb extrai fonemas com sucesso.
 ```
 
 ---
@@ -258,6 +248,30 @@ HDRIs NECESSÁRIOS:
 - Floresta
 - Cenário urbano noturno
 FONTE GRATUITA: https://polyhaven.com/hdris
+```
+
+### LA7 — Acervo Motion Graphics & Lower Thirds
+```
+STATUS: 🟡 Em andamento (Upload no GDrive pelo Usuário)
+LOCALIZAÇÃO: assets/motion_graphics/
+
+ACERVO EXTERNO:
+- Pacotes Envato/Motion Array (Alpha Channel / WebM)
+- Lower Thirds (Subscribe, Like, Nome, Botões)
+- Overlays (VHS, Glitch, Film Grain, Light Leaks)
+COMO USAR: O Python (via VSE) puxará e embedará esses vídeos diretamente na Faixa 3.
+```
+
+### LA8 — Acervo de Plugins AE / Templates de Vídeo
+```
+STATUS: 🟡 Em andamento (Upload no GDrive pelo Usuário)
+LOCALIZAÇÃO: assets/templates_ae/ e assets/vfx_packs/
+
+ACERVO EXTERNO:
+- Magic Packs (fogo realista, raios, magia 2D)
+- Efeitos Sonoros atrelados (SFX Sync)
+- Templates HTML5 interagindo com React
+COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders Puros do Blender.
 ```
 
 ---
