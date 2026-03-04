@@ -381,6 +381,8 @@ COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders
 | I4 | Dashboard de projetos | Gerenciar múltiplos clientes/projetos |
 | I5 | API de geração | REST API: briefing → script Python |
 | I6 | Painel de clientes | White-label: cada cliente tem seu hub |
+| I7 | Painel Gestor Social | Analítica e Multi-Upload Nativo |
+| I8 | Engine Misto de Billing | Assinatura Fixa + GPU Tokens Avulsos |
 
 ---
 
@@ -534,6 +536,27 @@ O QUE É: REST API que recebe briefing e retorna script Python
          Permite integração com ferramentas de terceiros
 ```
 
+### I5 — Engine Misto de Billing (Tokens + Subscription)
+```
+STATUS: 🔵 Fase 4 (futura)
+O QUE É: Sistema financeiro gamificado. Mensalidade base ($30/mês).
+         A mensalidade dá acesso às automações sociais. 
+         Gerações 3D gastam "Tokens" atrelados a Recargas Replicate-Style ($5/$10).
+```
+
+### I6 — Painel de Clientes (SaaS Dashboard)
+```
+STATUS: 🔵 Fase 4 (futura)
+O QUE É: Onde a Psicóloga / Agência gerencia seus vídeos e tokens.
+```
+
+### I7 — Hub de Gestão de Mídias Sociais (Lock-in)
+```
+STATUS: 🔵 Fase 4 (futura)
+O QUE É: Exportação de vídeo nativa via API (TikTok, Reels, YT).
+         O usuário não precisa baixar e postar no celular. Analytics de leads.
+```
+
 ---
 
 ## ✅ SOUND DESIGN & MÚSICA (Planejamento)
@@ -625,7 +648,7 @@ FASE FINAL (White Label):
 | **Agente IA** | @blender-animator v2.0 | ✅ Completo | 100% |
 | **Documentação** | README + Docs + Bíblia | ✅ Completo | 100% |
 | **Pipeline Áudio** | ElevenLabs + Rhubarb + Blender | ✅ Código pronto | 80% |
-| **Infrastructure** | White Label (I1-I6) | 🔵 Fase final | 0% |
+| **Infrastructure** | White Label + Painel Social | 🔵 Fase final | 0% |
 | **Automações Adobe** | Eixo 8 (AE/PR/PS Scripts) | 🔵 Não iniciado | 0% |
 | **TOTAL GERAL** | | **Em evolução** | **~35%** |
 
