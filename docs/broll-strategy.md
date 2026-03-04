@@ -21,7 +21,13 @@ A regra visual de ouro do B-Roll Engine é a **Ancoragem Literal**.
 
 ## 3. O Fluxo de Funcionamento (Pipeline)
 
-1. **Ingestão Auditiva**: 
+1. **A Fase Zero: Sugestão de Retenção (Motor de Neuromarketing)**:
+   - O Python puramente analisa o upload do criador: *É "Talking Head"? A profissional fala devagar? É um assunto tenso?*. 
+   - Essa fase toma a decisão executiva de Arte:
+      - **"Full B-Roll"** (Corta o vídeo para tela cheia 3D, para compensar falas longas).
+      - **"Mixado/Cortes Rápidos"** (Não remove o rosto do profissional de saúde porque é denso e importante o contato visual, mas interpola com B-Rolls rápidos).
+      - **"VFX Overlay"** (Mantém a psicóloga no vídeo e renderiza o Blender com fundo Transparente – *Alpha Channel* – para chover partículas e objetos brilhantes literalmente do lado dela na edição).
+2. **Ingestão Auditiva**: 
    - Usuário faz upload do trecho do vídeo ou áudio (ex: 5-10 segundos da psicóloga falando).
    - O sistema transcreve usando OpenAI Whisper.
 2. **LLM Concept Simplifier**:
@@ -39,6 +45,7 @@ B-Rolls não precisam de direção de arte de longa-metragem. Eles precisam ser 
 O template de B-Roll gerará um arquivo de 72 frames (3 segundos a 24fps) desenhado para ser repetido em loop pelo editor se necessário. Tudo renderizado pelo `render_manager` no preset "tiktok" ou "youtube".
 
 ## 5. Passos de Desenvolvimento Necessários
-Para viabilizar isso, precisamos adicionar na nossa `Biblioteca de Assets` (Eixo 2):
+Para viabilizar isso, precisamos adicionar na nossa `Biblioteca de Assets` (Eixo 2) e Eixo 6 (Pipeline):
 1. **Coleção de Props Universais:** Lâmpada, Cérebro de brinquedo, Balão, Imã, Corrente, Ampulheta, Engrenagens, Copo de Água.
-2. **Template TN21 - `broll_generator.py`:** Um script que serve de base para o LLM injetar as animações e objetos nele.
+2. **O Suggestion Engine:** O código `scripts/pipeline/suggestion_engine.py` (Criado ✅) que define se o Render será sólido ou overlay flutuante.
+3. **Template TN21 - `broll_generator.py`:** Um script que serve de base para o LLM injetar as animações e objetos nele e exportar o resultado.
