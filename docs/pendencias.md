@@ -380,9 +380,10 @@ COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders
 | I3 | Sistema de templates catalogado | Biblioteca com 20+ templates por nicho |
 | I4 | Dashboard de projetos | Gerenciar múltiplos clientes/projetos |
 | I5 | API de geração | REST API: briefing → script Python |
-| I6 | Painel de clientes | White-label: cada cliente tem seu hub |
+| I6 | Painel de Clientes | White-label: cada cliente tem seu hub |
 | I7 | Painel Gestor Social | Analítica e Multi-Upload Nativo |
 | I8 | Engine Misto de Billing | Assinatura Fixa + GPU Tokens Avulsos |
+| I9 | Security Cofre & Code Armor | Ofuscação de código e API descentralizada |
 
 ---
 
@@ -555,6 +556,14 @@ O QUE É: Onde a Psicóloga / Agência gerencia seus vídeos e tokens.
 STATUS: 🔵 Fase 4 (futura)
 O QUE É: Exportação de vídeo nativa via API (TikTok, Reels, YT).
          O usuário não precisa baixar e postar no celular. Analytics de leads.
+```
+
+### I8 — Sistema Anti-Plágio (Security Coffer & Cythonizer)
+```
+STATUS: 🔵 Fase 4 (futura)
+O QUE É: Onde protegemos o código (Propriedade Intelectual).
+         - Python Cythonizer (Transforma o .py em binário fechado na GPU).
+         - API Descentralizada (O motor de IA mestre não fica na mesma máquina do Blender).
 ```
 
 ---
