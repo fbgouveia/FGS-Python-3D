@@ -284,6 +284,7 @@ FONTE GRATUITA: https://polyhaven.com/hdris
 [ ] TN7: news_explainer.py         → Personagem explica notícia com infográfico
 [ ] TN8: educational_video.py      → Animação educativa com objetos 3D
 [ ] TN9: music_visualizer.py       → Visualização de áudio em 3D reativo
+[ ] TN21: broll_generator.py       → B-Rolls Concretos (Psicologia/Medicina/Educação)
 ```
 
 ### Científico e Corporativo
@@ -318,6 +319,7 @@ FONTE GRATUITA: https://polyhaven.com/hdris
 | PP3 | **Tour pelo Coração** | Medicina/Educação | TN10 | 🔵 Não iniciado |
 | PP4 | **Reveal de Logo FGS** | Corporativo/Branding | TN14 | 🔵 Não iniciado |
 | PP5 | **Short Viral de Partículas** | Redes sociais | TN15 | 🔵 Não iniciado |
+| PP6 | **B-Roll Ansiedade/Psicologia** | B-Roll Engine | TN21 | 🔵 Não iniciado |
 
 ---
 
@@ -429,6 +431,7 @@ PASSOS:
 | S2 | **P2** | `scripts/commercials/liquid_splash.py` |
 | S3 | **P3** | `scripts/shorts/particle_burst.py` |
 | S4 | **P3** | `scripts/youtube/episode_base.py` |
+| S5 | **P1** | `scripts/social/broll_generator.py` |
 
 ---
 
