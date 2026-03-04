@@ -27,25 +27,32 @@ A regra visual de ouro do B-Roll Engine é a **Ancoragem Literal**.
       - **"Full B-Roll"** (Corta o vídeo para tela cheia 3D, para compensar falas longas).
       - **"Mixado/Cortes Rápidos"** (Não remove o rosto do profissional de saúde porque é denso e importante o contato visual, mas interpola com B-Rolls rápidos).
       - **"VFX Overlay"** (Mantém a psicóloga no vídeo e renderiza o Blender com fundo Transparente – *Alpha Channel* – para chover partículas e objetos brilhantes literalmente do lado dela na edição).
-2. **Ingestão Auditiva**: 
-   - Usuário faz upload do trecho do vídeo ou áudio (ex: 5-10 segundos da psicóloga falando).
-   - O sistema transcreve usando OpenAI Whisper.
+2. **Painel Front-End (Visual Timeline)**:
+   - *O pulo do gato para o produto vendável:* O sistema não apenas cospe uma lista de textos. O Front-End exibirá uma **Timeline de Vídeo Interativa**.
+   - No painel, o usuário verá o vídeo original rolando e marcações (ex: `00:01:24 - Inserir VFX Ansiedade [Alpha]`, `00:02:10 - Corte Seco B-Roll Depressão [Block]`).
+   - O usuário tem o poder de arrastar essas sugestões, aceitar (dar o *Approve*) ou simplesmente mudar o B-Roll gerado.
+3. **Ingestão Auditiva e Transcrição Cênica**: 
+   - O sistema usa a transcrição de áudio não apenas para a leganda, mas para mapear o *Timing Perfeito* usando os carimbos de tempo (timestamps) de cada palavra-chave falada.
 2. **LLM Concept Simplifier**:
    - Um prompt do GPT/Claude altamente treinado analisa a frase.
    - *Prompt interno:* "Você é um diretor de arte popular. Transforme o conceito X num objeto cotidiano único isolado num fundo escuro sendo afetado pelas leis da física."
-3. **Conversão para Código Python (Blender)**:
+5. **Conversão para Código Python (Blender)**:
    - A resposta da LLM é passada para o gerador de scripts (baseado nos templates).
    - O código invoca os scripts do **Eixo 1**: `scene_factory.py`, `vfx_engine.py` e `animation_engine.py`.
-4. **Renderização VSE**:
-   - O Blender renderiza a cena.
-   - O `audio_manager.py` pode incluir efeitos sonoros impactantes (*tick-tock* para ansiedade, vidro quebrando, *woosh*).
+6. **Auto-Compositing e Render Final VSE (A Resposta do "Vale a Pena?")**:
+   - SIM, o Blender renderizará TUDO! Esse é o diferencial de um SaaS.
+   - Nós não vamos obrigar a psicóloga a baixar arquivos soltos `.mp4` com Alpha transparente e abrir o Premiere.
+   - O Blender possui o **Video Sequence Editor (VSE)** e o **Compositor Nodes**. 
+   - **Como Funciona:** O Python vai colocar o vídeo original (`minhamae.mp4`) na Faixa 1 da timeline do Blender. Nas Faixas de cima, o Python joga e encaixa perfeitamente nos milissegundos exatos todos os VFX e B-Rolls gerados pela Fase 3.
+   - **O Retorno:** O servidor devolve um ÚNICO vídeo `.mp4` 100% finalizado com o rosto da sua mãe, o fundo com faíscas renderizadas e os cortes secos em 3D e áudios SFX tudo colado.
 
 ## 4. O Sistema "Loop 3 Segundos"
 B-Rolls não precisam de direção de arte de longa-metragem. Eles precisam ser cirúrgicos.
-O template de B-Roll gerará um arquivo de 72 frames (3 segundos a 24fps) desenhado para ser repetido em loop pelo editor se necessário. Tudo renderizado pelo `render_manager` no preset "tiktok" ou "youtube".
+O template básico gerará arquivos que podem atuar em Background ou ser loops em tela cheia renderizados pelo `render_manager` no preset "tiktok".
 
 ## 5. Passos de Desenvolvimento Necessários
 Para viabilizar isso, precisamos adicionar na nossa `Biblioteca de Assets` (Eixo 2) e Eixo 6 (Pipeline):
-1. **Coleção de Props Universais:** Lâmpada, Cérebro de brinquedo, Balão, Imã, Corrente, Ampulheta, Engrenagens, Copo de Água.
-2. **O Suggestion Engine:** O código `scripts/pipeline/suggestion_engine.py` (Criado ✅) que define se o Render será sólido ou overlay flutuante.
-3. **Template TN21 - `broll_generator.py`:** Um script que serve de base para o LLM injetar as animações e objetos nele e exportar o resultado.
+1. **Coleção de Props Universais:** Lâmpada, Cérebro de brinquedo, Balão, Imã, Corrente, Ampulheta.
+2. **O Suggestion Engine:** O código `scripts/pipeline/suggestion_engine.py` (Criado ✅).
+3. **Motor Timeline Assembly:** Um novo módulo no `render_manager` que cria canais de composição para vídeos de fundo.
+4. **Template TN21 - `broll_generator.py`:** Um script que baseia a lógica e injeta os assets (Criado ✅).
