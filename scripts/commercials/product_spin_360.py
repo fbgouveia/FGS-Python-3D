@@ -39,7 +39,15 @@ def setup_render_settings():
     
     # Motor de Renderização (Eevee Next)
     scene.render.engine = 'BLENDER_EEVEE_NEXT'
+    
+    # Configurações de Luxo (Eevee Next / 4.2)
     scene.eevee.use_shadows = True
+    scene.eevee.use_raytracing = True # Raytracing obrigatório para materiais premium
+    scene.eevee.ray_tracing_method = 'SCREEN'
+    scene.eevee.use_bloom = True # Reativando Bloom (ainda presente na API 4.2 local)
+    scene.display_settings.display_device = 'sRGB'
+    scene.view_settings.view_transform = 'AgX' # Melhor gerenciamento de cor moderno
+    # scene.view_settings.look = 'High Contrast'
     
     # Cor de Fundo do Mundo (Preto Profundo para destacar a luz)
     world = scene.world
@@ -111,9 +119,8 @@ def create_premium_material():
 
 def create_product():
     """Cria o objeto principal (O nosso 'Produto') e o anima."""
-    # Como não temos um modelo 3D importado agora, vamos usar um cilindro estilizado 
-    # simulando um frasco de perfume ou item de luxo.
-    bpy.ops.mesh.primitive_cylinder_add(vertices=64, radius=1, depth=3, location=(0, 0, 0.5))
+    # Produto centralizado e com escala corrigida para o "Golden Ratio"
+    bpy.ops.mesh.primitive_cylinder_add(vertices=64, radius=0.8, depth=2.5, location=(0, 0, 0))
     product = bpy.context.active_object
     product.name = "Produto_Principal"
     
@@ -150,8 +157,8 @@ def setup_cinematic_lighting():
     bpy.ops.object.light_add(type='AREA', radius=2, align='WORLD', location=(4, -3, 3))
     key_light = bpy.context.active_object
     key_light.name = "Light_Key"
-    key_light.data.energy = 500  # Watts
-    key_light.data.color = (1.0, 0.95, 0.9) # Levemente quente (laranja claro)
+    key_light.data.energy = 2000  # Watts - Muito mais forte para garantir luz em background
+    key_light.data.color = (1.0, 0.9, 0.8) # Quente suave
     # Direcionar a luz para o centro (0,0,1)
     track_to = key_light.constraints.new(type='TRACK_TO')
     
@@ -165,8 +172,8 @@ def setup_cinematic_lighting():
     bpy.ops.object.light_add(type='AREA', radius=3, align='WORLD', location=(-3, -4, 2))
     fill_light = bpy.context.active_object
     fill_light.name = "Light_Fill"
-    fill_light.data.energy = 150
-    fill_light.data.color = (0.9, 0.95, 1.0) # Levemente azul frio (contraste visual FGS)
+    fill_light.data.energy = 800
+    fill_light.data.color = (0.8, 0.9, 1.0) # Azul Frio FGS
     track = fill_light.constraints.new(type='TRACK_TO')
     track.target = target
     
@@ -174,13 +181,14 @@ def setup_cinematic_lighting():
     bpy.ops.object.light_add(type='AREA', radius=1.5, align='WORLD', location=(0, 4, 3))
     rim_light = bpy.context.active_object
     rim_light.name = "Light_Rim"
-    rim_light.data.energy = 800 # Mais forte de todas para dar o formato de brilho nas bordas
+    rim_light.data.energy = 3000 # Super forte para o WOW factor nas bordas gold
     track2 = rim_light.constraints.new(type='TRACK_TO')
     track2.target = target
 
 def setup_camera():
     """Adiciona a câmera cinematográfica com Profundidade de Campo e anima um micro-tracking."""
-    bpy.ops.object.camera_add(location=(0, -8, 1.5))
+    # Afastamos um pouco mais para garantir que o topo não seja cortado
+    bpy.ops.object.camera_add(location=(0, -10, 1.2))
     cam = bpy.context.active_object
     cam.name = "Camera_Principal"
     bpy.context.scene.camera = cam
@@ -204,10 +212,10 @@ def setup_camera():
         track.up_axis = 'UP_Y'
         
     # Animação suave de Zoom-In na Câmera (Fator Retenção de Audiência)
-    cam.location[1] = -9 # Começa um pouco mais longe
+    cam.location[1] = -10 # Começa com enquadramento de segurança
     cam.keyframe_insert(data_path="location", frame=1, index=1)
     
-    cam.location[1] = -7.5 # Termina mais perto (Zoom de 1.5 metros ao longo de 5s)
+    cam.location[1] = -8.5 # Zoom-in dramático constante
     cam.keyframe_insert(data_path="location", frame=150, index=1)
 
 def main():
@@ -219,12 +227,21 @@ def main():
     create_product()
     setup_cinematic_lighting()
     setup_camera()
+    
+    # --- MÁGICA: FORÇAR VIEWPORT RENDERIZADO ---
+    for area in bpy.context.screen.areas:
+        if area.type == 'VIEW_3D':
+            for space in area.spaces:
+                if space.type == 'VIEW_3D':
+                    space.shading.type = 'RENDERED'
+                    space.region_3d.view_perspective = 'CAMERA' # Já entra na visão da câmera
+    
     print("FGS Studio: Cena configurada com sucesso!")
     print("FGS Studio: Iniciando Render Mágico em Background... Aguarde.")
     print("[========================================================]\n")
     
-    # RENDER AUTÔNOMO (Desativado temporariamente para ver a UI)
-    # bpy.ops.render.render(animation=True)
+    # RENDER AUTÔNOMO (ATIVADO: ENTREGA FINAL)
+    bpy.ops.render.render(animation=True)
     
     print("\n[========================================================]")
     print("FGS Studio: Cena Pronta! Salvando arquivo .blend para inspeção...")

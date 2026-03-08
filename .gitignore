@@ -28,3 +28,8 @@ Thumbs.db
 .venv/
 venv/
 env/
+
+# Node.js
+node_modules/
+dist/
+.npm
