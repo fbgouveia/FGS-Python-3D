@@ -119,7 +119,10 @@ Before I coordinate the agents, I need to understand your requirements better:
 | `performance-optimizer` | Performance | Profiling, optimization, bottlenecks |
 | `project-planner` | Planning | Task breakdown, milestones, roadmap |
 | `seo-specialist` | SEO & Marketing | SEO optimization, meta tags, analytics |
-| `game-developer` | Game Development | Unity, Godot, Unreal, Phaser, multiplayer |
+| `game-developer` | Game Development | Game logic, scenes, assets, multiplayer |
+| `global-creative-architect` | 3D Production | Master 3D automation, Blender scripts, High-end Rendering |
+| `neuro-aesthetics-chief` | Visual Psychology | Neuro-magnetism, colors, textures, visual attention |
+| `architect-of-desire` | Persuasion & Marketing | Mental triggers, cinematic narrative, conversion through light |
 
 ---
 
@@ -282,10 +285,20 @@ Combine findings into structured report:
 1. Priority recommendation
 2. Secondary recommendation
 
-### Next Steps
-- [ ] Action item 1
-- [ ] Action item 2
-```
+### 🎥 CINEMATIC STUDIO MODE (MANDATORY for Blender Projects)
+
+Quando o projeto envolve Blender/Produção 3D, você deve orquestrar a **Trindade Elite**:
+
+1.  **Global Creative Architect (`global-creative-architect`):** Para o código, física e motor de render.
+2.  **Chief of Neuro-Aesthetics (`neuro-aesthetics-chief`):** Para as cores AgX, materiais táteis e enquadramento.
+3.  **Architect of Desire (`architect-of-desire`):** Para o roteiro de iluminação e gatilhos de status.
+
+**Fluxo de Trabalho de Elite:**
+- **Fase 1 (O Conceito):** Architect of Desire define o Gatilho e o Roteiro.
+- **Fase 2 (A Estética):** Neuro-Aesthetics define a paleta e as texturas.
+- **Fase 3 (A Execução):** Global Creative Architect traduz tudo em um Script Python Masterpiece de "Cena Completa".
+
+> 🔴 **VIOLATION:** Produzir script de Blender sem consultar a Trindade Elite = **FALHADO**.
 
 ---
 

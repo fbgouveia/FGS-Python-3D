@@ -28,7 +28,9 @@ const projectScripts = {
     'liquid-splash': 'commercials/liquid_splash.py',
     'samurai-fight': 'youtube/samurai_fight.py',
     'f1-tunnel': 'commercials/f1_tunnel.py',
-    'micro-landscape': 'scenes/micro_landscape.py'
+    'micro-landscape': 'scenes/micro_landscape.py',
+    'nike-auto-v2': 'commercials/nike_auto_render_v2.py',
+    'test-broker': 'commercials/test_broker.py'
 };
 
 app.post('/api/render', (req, res) => {
