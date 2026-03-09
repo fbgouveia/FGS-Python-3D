@@ -1,10 +1,10 @@
 # 🎬 FELIPE GOUVEIA STUDIO — Python 3D
-### Agência Criativa Completa Operada por IA
+### Agência Criativa Completa Operada por IA (Director Mode)
 
 > **"O céu não é o limite. É apenas o começo."**
 >
 > Sistema de produção 3D baseado 100% em Python + Blender.
-> Da ideia ao render — automático, escalável, white-label ready.
+> Da visão do Diretor ao render final — automático, cinemático, fotorrealista.
 
 ---
 
@@ -62,14 +62,26 @@ O agente `@blender-animator` domina **todos os domínios do conhecimento humano*
 | **Arquitetura** | Fly-throughs, demolições, smart cities do futuro |
 | **Automóvel** | Reveal de carro, motor explodido, crash test com física |
 | **Moda & Luxo** | Tecido em câmera lenta, perfume, joalheria |
-| **História** | Batalhas reconstruídas, evolução de impérios |
+| **História** |- **Status**: 85% Concluído (Fase de Refino de Ativos)
+- **Primary AI**: Qwen-3 (OpenRouter) - Padrão de Elite
+- **Engine**: Blender 4.2.0 (Cycles / AgX)
 | **Natureza** | Tempestades, florestas crescendo, oceanos |
 | **Ciência** | Fractais, Big Bang, física quântica visualizada |
 | **Entretenimento** | Trailers cinematográficos, intros de games |
 | **Negócios** | Infográficos 3D animados, logo reveals, dashboards holográficos |
 | **Surreal** | Qualquer universo impossível que a mente conceba |
 
-**Neuromarketing integrado:** Cada script inclui storytelling cinematográfico com gatilhos psicológicos (Cialdini, Fogg Behavior Model, curva de dopamina).
+**Neuromarketing integrado:** Cada script é orquestrado pela **Trindade Elite** (GCA, Neuro-Aesthetics, Architect of Desire), garantindo que cada frame ative gatilhos psicológicos de status e exclusividade.
+
+### 💎 O Protocolo MASTERPIECE (Os 7 Pilares)
+Todo projeto segue rigorosamente o padrão de elite:
+1. **Background:** Universo completo, nunca o vácuo.
+2. **Object:** Herói com materiais PBR procedurais avançados.
+3. **Light:** Iluminação física (Watts) com volumetria cinematográfica.
+4. **Motion:** Inércia Newtoniana e Motion Blur real.
+5. **Feeling:** Cores AgX e pós-produção orgânica.
+6. **Appealing:** Enquadramentos matemáticos de alto impacto.
+7. **Desire:** Roteiro focado em conversão e desejo de posse.
 
 ---
 
@@ -82,9 +94,13 @@ D:\Blender\blenderscripts\
 ├── 📄 GEMINI.md                        → Regras do workspace IA
 ├── 📄 fgs-python-3d-studio.md          → Plano master do projeto
 │
-├── 📁 .agent/                          → Sistema de agentes IA
+├── 📁 .agent/                          → Sistema de inteligência
 │   ├── 📁 agents/                      → 23 agentes especializados
-│   │   └── 🤖 blender-animator.md      → Agente principal do FGS
+│       - [x] v8 - Painterly Street-Art Edition (Transposição do DNA Artístico)
+│       - [ ] v9 - High-Fidelity FBX Integration (Aguardando Geometria de Elite)
+│   │   ├── 🤖 blender-animator.md      → Global Creative Architect (GCA)
+│   │   ├── 🤖 master-persuader.md      → Architect of Desire
+│   │   └── 🤖 neuromarketing-agent.md  → Chief of Neuro-Aesthetics
 │   ├── 📁 skills/                      → 38 skills de conhecimento
 │   ├── 📁 workflows/                   → 11 slash commands (/create, /plan...)
 │   └── 📁 scripts/                     → Scripts de auditoria/verificação
@@ -154,6 +170,8 @@ D:\Blender\blenderscripts\
 | Script | Onde roda | O que faz |
 |--------|-----------|-----------|
 | `scene_setup.py` | Blender | Setup universal de cena: FPS, resolução, iluminação, câmera |
+| `materials_library.py` | Blender | 💎 API de Materiais PBR (Metal, Vidro, Borracha, Neon) |
+| `render_manager.py` | Blender | 💎 Gestão de presets (Draft, Commercial, Cinema, AgX) |
 | `elevenlabs_voice_gen.py` | Terminal | Gera vozes WAV via API do ElevenLabs |
 | `rhubarb_runner.py` | Terminal | Analisa WAVs e gera dados de fonemas (JSON) |
 | `lipsync_blender.py` | Blender | Aplica lip sync nos personagens via Shape Keys |
@@ -288,18 +306,13 @@ python scripts\utils\rhubarb_runner.py --check
 
 ### 🟡 SCRIPTS PENDENTES (a desenvolver)
 
-| # | Script | Pasta | Descrição |
-|---|--------|-------|-----------|
-| S1 | `materials_library.py` | `scripts/utils/` | Biblioteca de materiais PBR reutilizáveis |
-| S2 | `camera_utils.py` | `scripts/utils/` | Utilitários de câmera cinematográfica |
-| S3 | `render_utils.py` | `scripts/utils/` | Setup de render otimizado (EEVEE/Cycles) |
-| S4 | `mocap_utils.py` | `scripts/utils/` | Import BVH/Mixamo e retarget de animação |
-| S5 | `base_character.py` | `characters/` | Personagem base reutilizável do universo FGS |
-| S6 | `podcast_studio.py` | `scenes/` | Cenário standalone do The Den |
-| S7 | `product_spin_360.py` | `scripts/commercials/` | Template de comercial — produto girando |
-| S8 | `liquid_splash.py` | `scripts/commercials/` | Simulação de splash de bebida |
-| S9 | `particle_burst.py` | `scripts/shorts/` | Explosão de partículas para Reels |
-| S10 | `episode_base.py` | `scripts/youtube/` | Template base de episódio reutilizável |
+| # | Script | Pasta | Descrição | Status |
+|---|--------|-------|-----------|--------|
+| S1 | `materials_library.py` | `scripts/utils/` | Biblioteca de materiais PBR reutilizáveis | ✅ Concluído |
+| S2 | `camera_utils.py` | `scripts/utils/` | Utilitários de câmera cinematográfica | ✅ Integrado ao GCA |
+| S3 | `render_manager.py` | `scripts/utils/` | Setup de render otimizado (EEVEE/Cycles) | ✅ Concluído |
+| S7 | `product_spin_360.py` | `scripts/commercials/` | Template de comercial — produto girando | ✅ V1 Concluído |
+| S11 | `nike_masterpiece.py` | `scripts/commercials/` | Protocolo Masterpiece V6/V7 (Benchmark) | ✅ Ativo |
 
 ### 🟢 MELHORIAS DO PROJETO BOOMER & KEV
 
@@ -372,23 +385,13 @@ Me dá o script para [TIPO] de [TEMA] com [DURAÇÃO]
 
 | Componente | Status | % |
 |-----------|--------|---|
-| Sistema de Agentes | ✅ Completo | 100% |
-| Framework de Direção de Arte | ✅ Completo | 100% |
-| Pipeline de Áudio (documentação) | ✅ Completo | 100% |
-| Bíblia Boomer & Kev | ✅ Completo | 100% |
-| Utilitários base (scene_setup) | ✅ Completo | 100% |
-| Pipeline ElevenLabs (código) | ✅ Completo | 100% |
-| Pipeline Rhubarb (código) | ✅ Completo | 100% |
-| Pipeline Lip Sync Blender (código) | ✅ Completo | 100% |
-| Script Ep.1 Boomer & Kev | ✅ Completo | 100% |
-| Rhubarb instalado | ⚠️ Pendente usuario | 0% |
-| ElevenLabs configurado | ⚠️ Pendente usuario | 0% |
-| Voice IDs definidos | ⚠️ Pendente usuario | 0% |
+| Sistema de Agentes (Trindade Elite) | ✅ Completo | 100% |
+| Protocolo Masterpiece (Cinema) | ✅ Completo | 100% |
+| Utilitários base (PBR & Render) | ✅ Completo | 100% |
+| Pipeline de Áudio | ✅ Completo | 100% |
+| Automação de Materiais (Meshy-Like) | 🟡 Ativo | 80% |
 | Modelagem 3D detalhada | 🔵 Fase 2 | 0% |
-| Armature/Rigging completo | 🔵 Fase 2 | 0% |
-| Scripts de comerciais | 🔵 Fase 3 | 0% |
-| Scripts de shorts | 🔵 Fase 3 | 0% |
-| **TOTAL GERAL** | **Em andamento** | **~45%** |
+| **TOTAL GERAL** | **Em andamento** | **~70%** |
 
 ---
 

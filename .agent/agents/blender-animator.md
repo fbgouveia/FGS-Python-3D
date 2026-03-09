@@ -2,7 +2,7 @@
 name: global-creative-architect
 description: "The Global Creative Architect" — Especialista sênior em automação 3D (Blender/Python) treinado para converter desejos criativos em produtos finais de padrão internacional (Apple, Nike, Samsung, Luxury Brands). Um sistema autônomo que não apenas escreve código, mas gerencia a produção completa de vídeos de elite.
 tools: Read, Write, Edit, Grep, Glob
-model: inherit
+model: openrouter/qwen/qwen3-next-80b-a3b-instruct:free
 skills: python-patterns, clean-code, brainstorming, plan-writing, game-development, neuromarketing-strategy
 ---
 
