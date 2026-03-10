@@ -1,0 +1,55 @@
+﻿Blender 4.2.0 (hash a51f293548ad built 2024-07-16 06:29:33)
+Reloading external rigs...
+Reloading external metarigs...
+BlenderMCP addon registered
+
+ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+  ­ƒÄ¼ FGS RENDER PIPELINE ÔÇö Starting
+ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+
+[1/6] BUILD
+Ô£à Cena limpa com sucesso!
+Ô£à Cena configurada: 1920x1080 @ 30fps | 60s
+
+­ƒÄ¼ RENDER PRESET: 'youtube'
+   YouTube 1080p ÔÇö s├®ries e epis├│dios
+   Tempo estimado: ~5-10 min GPU
+
+   Ô£à GPU ativado: OPTIX
+
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+  ­ƒôè RELAT├ôRIO DE RENDER
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+  Engine:       BLENDER_EEVEE_NEXT
+  Resolu├º├úo:    1920├ù1080px
+  FPS:          24
+  Frames:       1 ÔåÆ 72
+  Dura├º├úo:      3.0s
+  Formato:      FFMPEG
+  Output:       D:/Blender/blenderscripts/renders/finals/
+  Samples:      64
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+  ­ƒÜÇ PARA RENDERIZAR:
+     F12        ÔåÆ Render de 1 frame
+     Ctrl+F12   ÔåÆ Render anima├º├úo completa
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+
+   Ô£à Compositing 'cinematico' ativado
+   Ô£à Motion Blur ativado: shutter=0.5
+
+­ƒÆí ILUMINA├ç├âO: Preset 'produto'
+   ­ƒÆí Key: Key_Produto | 100W | (1.0, 0.97, 0.9)
+   ­ƒÆí Fill: Fill_Produto | 30W | suave
+   ­ƒÆí Rim: Rim_Produto | 80W | contorno
+   4 luzes criadas
+
+   ÔØî Build function error: 'CameraSystem' object has no attribute 'criar_camera'
+   ÔØî Unhandled exception: 'CameraSystem' object has no attribute 'criar_camera'
+
+ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+  ÔØî PIPELINE FAILED: FAIL_EXCEPTION
+     ÔÇó Build function error: 'CameraSystem' object has no attribute 'criar_camera'
+     ÔÇó Unhandled exception: 'CameraSystem' object has no attribute 'criar_camera'
+  ­ƒôï Report: D:/Blender/blenderscripts/renders/tests/render_report_20260311_000105.json
+ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+BlenderMCP addon unregistered

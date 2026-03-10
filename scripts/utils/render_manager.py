@@ -137,9 +137,9 @@ class RenderManager:
             "resolucao": (1280, 720),
             "fps": 24,
             "samples": 4,
-            "formato": "AVI_JPEG",
-            "codec": None,
-            "qualidade_video": None,
+            "formato": "MP4",
+            "codec": "H264",
+            "qualidade_video": "LOW",
             "denoiser": False,
             "bloom": False,
             "tempo_estimado": "~30 seg GPU"
@@ -324,10 +324,6 @@ class RenderManager:
             self.scene.render.image_settings.file_format = 'PNG'
             self.scene.render.image_settings.color_mode = 'RGBA'
             self.scene.render.image_settings.compression = 15
-
-        elif formato == "AVI_JPEG":
-            self.scene.render.image_settings.file_format = 'AVI_JPEG'
-            self.scene.render.image_settings.quality = 80
 
         elif formato == "EXR":
             self.scene.render.image_settings.file_format = 'OPEN_EXR'

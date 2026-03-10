@@ -159,8 +159,8 @@ class AnimationEngine:
                 break
                 
         if fcurve:
-            mod = fcurve.modifiers.new(type='BUILTIN_FUNCTION')
-            mod.function_type = 'SINE'
+            mod = fcurve.modifiers.new(type='FNGENERATOR')
+            mod.function_type = 'SIN'
             mod.amplitude = amplitude
             mod.phase_multiplier = velocidade / 10.0
             mod.phase_offset = random.uniform(0, 10)  # Offset aleatório para objetos não flutuarem iguais
@@ -205,8 +205,8 @@ class AnimationEngine:
         
         for fc in action.fcurves:
             if fc.data_path == "scale" and fc.array_index in [1, 2]:
-                mod = fc.modifiers.new(type='BUILTIN_FUNCTION')
-                mod.function_type = 'SINE'
+                mod = fc.modifiers.new(type='FNGENERATOR')
+                mod.function_type = 'SIN'
                 mod.amplitude = amplitude_escala
                 mod.phase_multiplier = velocidade / 10.0
                 mod.phase_offset = random.uniform(0, 10)
@@ -294,4 +294,3 @@ class AnimationEngine:
         """Remove toda a animação do objeto."""
         if obj and obj.animation_data:
             obj.animation_data_clear()
-"""
