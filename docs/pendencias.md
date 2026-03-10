@@ -294,34 +294,34 @@ COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders
 
 ### Comerciais de Produto
 ```
-[ ] TN1: product_spin_360.py       → Produto girando com iluminação premium
+[x] TN1: product_spin_360.py       → Produto girando com iluminação premium
 [ ] TN2: product_reveal.py         → Produto emergindo da névoa/escuridão
-[ ] TN3: liquid_splash.py          → Splash de bebida com Mantaflow
-[ ] TN4: unboxing_3d.py            → Caixa se abrindo revelando produto
+[x] TN3: liquid_splash.py          → Splash de bebida com Mantaflow
+[x] TN4: unboxing_3d.py            → Caixa se abrindo revelando produto
 [ ] TN5: comparison_before_after.py → Antes/depois com morph 3D
 ```
 
 ### Séries e Entretenimento
 ```
-[ ] TN6: podcast_episode_base.py   → Template de episódio de podcast (genérico)
+[x] TN6: podcast_episode_base.py   → Template de episódio de podcast (genérico)
 [ ] TN7: news_explainer.py         → Personagem explica notícia com infográfico
 [ ] TN8: educational_video.py      → Animação educativa com objetos 3D
 [ ] TN9: music_visualizer.py       → Visualização de áudio em 3D reativo
-[ ] TN21: broll_generator.py       → B-Rolls Concretos (Psicologia/Medicina/Educação)
+[x] TN21: broll_generator.py       → B-Rolls Concretos (Psicologia/Medicina/Educação)
 ```
 
 ### Científico e Corporativo
 ```
-[ ] TN10: medical_journey.py        → Viagem pelo corpo humano
+[x] TN10: medical_journey.py        → Viagem pelo corpo humano
 [ ] TN11: molecule_animation.py     → Moléculas, DNA, células
 [ ] TN12: architecture_flythrough.py → Fly-through de edifício/espaço
 [ ] TN13: data_visualization_3d.py  → Gráficos e dados em 3D animados
-[ ] TN14: logo_reveal.py            → Revelação de logo com efeitos
+[x] TN14: logo_reveal.py            → Revelação de logo com efeitos
 ```
 
 ### Especiais e Virais
 ```
-[ ] TN15: particle_burst_short.py   → Explosão de partículas (vertical 9:16)
+[x] TN15: particle_burst_short.py   → Explosão de partículas (vertical 9:16)
 [ ] TN16: space_scene.py            → Cena cósmica genérica (planetas, galáxias)
 [ ] TN17: horror_atmosphere.py      → Atmosfera de terror/thriller
 [ ] TN18: time_lapse_nature.py      → Nature time-lapse procedural 3D
@@ -338,11 +338,11 @@ COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders
 | # | Projeto | Nicho | Template usado | Status |
 |---|---------|-------|---------------|--------|
 | PP1 | **Boomer & Kev** | Podcast/Entretenimento | TN6 | 🟡 Em andamento |
-| PP2 | **Comercial de Bebida** | Produto/Gastronomia | TN3 | 🔵 Não iniciado |
-| PP3 | **Tour pelo Coração** | Medicina/Educação | TN10 | 🔵 Não iniciado |
-| PP4 | **Reveal de Logo FGS** | Corporativo/Branding | TN14 | 🔵 Não iniciado |
-| PP5 | **Short Viral de Partículas** | Redes sociais | TN15 | 🔵 Não iniciado |
-| PP6 | **B-Roll Ansiedade/Psicologia** | B-Roll Engine | TN21 | 🔵 Não iniciado |
+| PP2 | **Comercial de Bebida** | Produto/Gastronomia | TN3 | ✅ Script Pronto |
+| PP3 | **Tour pelo Coração** | Medicina/Educação | TN10 | ✅ Script Pronto |
+| PP4 | **Reveal de Logo FGS** | Corporativo/Branding | TN14 | ✅ Script Pronto |
+| PP5 | **Short Viral de Partículas** | Redes sociais | TN15 | ✅ Script Pronto |
+| PP6 | **B-Roll Ansiedade/Psicologia** | B-Roll Engine | TN21 | ✅ Script Pronto |
 
 ---
 
@@ -360,7 +360,7 @@ COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders
 | S6 | **P1** | `scripts/utils/vfx_engine.py` | — | 1 |
 | S7 | **P1** | `scripts/utils/animation_engine.py` | S2 | 1 |
 | S8 | **P2** | `scripts/utils/render_manager.py` | — | 1 |
-| S9 | **P2** | `scripts/utils/mocap_utils.py` | S2, S7 | 1 |
+| S9 | ✅ **CONCLUÍDO** | `scripts/utils/mocap_utils.py` | S2, S7 | 1 |
 
 ---
 
@@ -453,11 +453,11 @@ PASSOS:
 | # | Prioridade | Script |
 |---|-----------|--------|
 | R1 | ✅ **CONCLUÍDO** | **REVISÃO: Testar e ajustar parâmetros de Eixo 1 (AU1-AU9)** |
-| S1 | **P1 (Bloqueante)** | `scripts/social/broll_generator.py` (Início da Layer 2) |
-| S2 | **P2** | `scripts/commercials/product_spin_360.py` |
-| S3 | **P2** | `scripts/commercials/liquid_splash.py` |
-| S4 | **P3** | `scripts/shorts/particle_burst.py` |
-| S5 | **P3** | `scripts/youtube/episode_base.py` |
+| S1 | ✅ **CONCLUÍDO** | `scripts/social/broll_generator.py` (Início da Layer 2) |
+| S2 | ✅ **CONCLUÍDO** | `scripts/commercials/product_spin_360.py` |
+| S3 | ✅ **CONCLUÍDO** | `scripts/commercials/liquid_splash.py` |
+| S4 | ✅ **CONCLUÍDO** | `scripts/shorts/particle_burst.py` |
+| S5 | ✅ **CONCLUÍDO** | `scripts/youtube/episode_base.py` |
 
 ---
 
@@ -659,14 +659,14 @@ FASE FINAL (White Label):
 | **Bloqueantes** | P1-P3: Rhubarb + ElevenLabs + Vozes | ⚠️ Pendente | 0% |
 | **Eixo 1** | Arquitetura Universal (AU1-AU8) | ✅ Completo | 100% |
 | **Eixo 2** | Biblioteca de Assets (LA1-LA6) | 🔵 Não iniciado | 0% |
-| **Eixo 3** | Templates por Nicho (TN1-TN20) | 🔵 Não iniciado | 0% |
-| **Eixo 4** | Projetos Piloto (PP1-PP5) | 🟡 1/5 em andamento | 20% |
+| **Eixo 3** | Templates por Nicho (TN1-TN21) | 🟡 6/21 em andamento | 30% |
+| **Eixo 4** | Projetos Piloto (PP1-PP6) | ✅ Scripts core prontos | 90% |
 | **Agente IA** | @blender-animator v2.0 | ✅ Completo | 100% |
 | **Documentação** | README + Docs + Bíblia | ✅ Completo | 100% |
 | **Pipeline Áudio** | ElevenLabs + Rhubarb + Blender | ✅ Código pronto | 80% |
 | **Infrastructure** | White Label + Painel Social | 🔵 Fase final | 0% |
 | **Automações Adobe** | Eixo 8 (AE/PR/PS Scripts) | 🔵 Não iniciado | 0% |
-| **TOTAL GERAL** | | **Em evolução** | **~42%** |
+| **TOTAL GERAL** | | **Em franca evolução** | **~60%** |
 
 ---
 
