@@ -149,6 +149,16 @@ O QUE FAZ:
 - 9 presets de qualidade (TikTok, Youtube, Cinema, Draft, etc)
 ```
 
+### AU9 — Gerenciador de Pipeline & Integração (NOVO)
+```
+STATUS: ✅ Concluído (scripts/utils/render_pipeline.py)
+ARQUIVO: scripts/utils/render_pipeline.py
+
+O QUE FAZ:
+- Orquestra build, validação, render e relatório JSON em modo headless.
+- VALIDADO via `scripts/tests/integration_test.py`.
+```
+
 ---
 
 ## 🟡 EIXO 2 — BIBLIOTECA DE ASSETS UNIVERSAL
@@ -442,12 +452,12 @@ PASSOS:
 
 | # | Prioridade | Script |
 |---|-----------|--------|
-| R1 | **P1** | **REVISÃO: Testar e ajustar parâmetros de Eixo 1 (AU1-AU8)** |
-| S1 | **P2** | `scripts/commercials/product_spin_360.py` |
-| S2 | **P2** | `scripts/commercials/liquid_splash.py` |
-| S3 | **P3** | `scripts/shorts/particle_burst.py` |
-| S4 | **P3** | `scripts/youtube/episode_base.py` |
-| S5 | **P1** | `scripts/social/broll_generator.py` |
+| R1 | ✅ **CONCLUÍDO** | **REVISÃO: Testar e ajustar parâmetros de Eixo 1 (AU1-AU9)** |
+| S1 | **P1 (Bloqueante)** | `scripts/social/broll_generator.py` (Início da Layer 2) |
+| S2 | **P2** | `scripts/commercials/product_spin_360.py` |
+| S3 | **P2** | `scripts/commercials/liquid_splash.py` |
+| S4 | **P3** | `scripts/shorts/particle_burst.py` |
+| S5 | **P3** | `scripts/youtube/episode_base.py` |
 
 ---
 
@@ -596,17 +606,16 @@ O script Python final do nicho (ex: Template de Comercial) importará os sons du
 ## 🗓️ CRONOGRAMA DE EVOLUÇÃO
 
 ```
-SEMANA 1 (AGORA — Desbloqueio Imediato):
-├── ✅ Resolver P1 (Rhubarb)
-├── ✅ Resolver P2 (ElevenLabs)
-├── ✅ Resolver P3 (Voice IDs)
-└── ✅ Render completo do Ep.1 com vozes + lip sync
+SEMANA 1 (CONCLUÍDO — Infraestrutura e Render):
+├── ✅ Resolver P1-P3 (Rhubarb/ElevenLabs configurado pelo Felipe)
+├── ✅ Criar Render Pipeline Orchestrator (AU9)
+├── ✅ Validar Integração Core (AU1-AU8) via Integration Test
+└── ✅ Render completo automatizado headless validado
 
-SEMANA 2 (Infraestrutura Base — Eixo 1):
-├── S1: materials_library.py (base de tudo)
-├── S4: camera_system.py
-├── S5: lighting_system.py
-└── S8: render_manager.py
+SEMANA 2 (Layer 2 — IA Orchestration & B-Rolls):
+├── 🔵 S1: broll_generator.py (Foco em Medicina/Psicologia)
+├── 🔵 IA Prompt Engineering para cenas 3D
+└── 🔵 Integração com Adobe Scripts (Eixo 8 inicial)
 
 SEMANA 3 (Personagens e Cenários Universais):
 ├── S2: character_factory.py (sistema genérico)
