@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: rhubarb_runner.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -31,7 +42,8 @@ import time
 # CONFIGURAÇÕES
 # ═══════════════════════════════════════════════════════════════
 
-BASE_DIR = Path("D:/Blender/blenderscripts")
+# Resolução dinâmica de caminhos para portabilidade (Windows/Linux/Cloud)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 RHUBARB_EXE = BASE_DIR / "tools" / "rhubarb" / "rhubarb.exe"
 AUDIO_RAW_DIR = BASE_DIR / "audio" / "raw"
 LIPSYNC_DIR = BASE_DIR / "audio" / "lipsync"

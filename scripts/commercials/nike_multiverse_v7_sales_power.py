@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: nike_multiverse_v7_sales_power.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   THE GLOBAL CREATIVE ARCHITECT — Felipe Gouveia Studio     ║

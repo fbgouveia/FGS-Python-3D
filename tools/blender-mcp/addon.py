@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: addon.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 # Code created by Siddharth Ahuja: www.github.com/ahujasid © 2025
 
 import re

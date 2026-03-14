@@ -1,0 +1,118 @@
+{
+    "metadata": {
+        "project_name": "Imperial Production V1 - Golden Benchmark",
+        "version": "1.0.0",
+        "author": "Antigravity Autonomous Orchestrator"
+    },
+    "scene": {
+        "duration_seconds": 15,
+        "fps": 24,
+        "engine": "EEVEE",
+        "resolution_x": 1920,
+        "resolution_y": 1080
+    },
+    "environment": {
+        "type": "luxury_showroom",
+        "params": {}
+    },
+    "characters": [
+        {
+            "name": "Luxury_Lion",
+            "preset": "LEAO_PREMIUM",
+            "position": [
+                0,
+                0,
+                0.3
+            ],
+            "overrides": {
+                "escala": [
+                    1.2,
+                    1.2,
+                    1.2
+                ]
+            }
+        },
+        {
+            "name": "Scientist",
+            "preset": "CIENTISTA",
+            "position": [
+                3,
+                2,
+                0
+            ],
+            "overrides": {}
+        }
+    ],
+    "animations": [
+        {
+            "target": "Camera",
+            "type": "orbitar",
+            "start_frame": 1,
+            "end_frame": 360,
+            "params": {
+                "look_at": [
+                    0,
+                    0,
+                    1.5
+                ],
+                "radius": 8.0,
+                "height": 2.5,
+                "voltas": 0.5
+            }
+        },
+        {
+            "target": "Luxury_Lion",
+            "type": "head_bob",
+            "start_frame": 1,
+            "end_frame": 360,
+            "params": {
+                "amplitude": 0.1,
+                "velocidade": 2.0
+            }
+        },
+        {
+            "target": "Scientist",
+            "type": "caminhar",
+            "start_frame": 1,
+            "end_frame": 360,
+            "params": {
+                "velocidade": 1.5,
+                "amplitude": 0.05
+            }
+        }
+    ],
+    "camera": {
+        "position": [
+            0,
+            -10,
+            3
+        ],
+        "look_at": [
+            0,
+            0,
+            1
+        ],
+        "fov": 35
+    },
+    "audio": {
+        "bgm": {
+            "path": "D:/Lorena/assets/audio/bgm/luxury_loop.mp3",
+            "volume": 0.3,
+            "fade_in": 3.0,
+            "fade_out": 3.0
+        },
+        "sfx": [
+            {
+                "path": "D:/Lorena/assets/audio/sfx/sparkle_reveal.wav",
+                "frame": 24,
+                "volume": 1.0
+            },
+            {
+                "path": "D:/Lorena/assets/audio/sfx/lion_roar_subtle.wav",
+                "frame": 120,
+                "volume": 0.8
+            }
+        ]
+    },
+    "_copyright": "© 2026 FELIPE GOUVEIA STUDIO - PROPRIEDADE PRIVADA - ADMINISTRAÇÃO CLARA GOUVEIA"
+}

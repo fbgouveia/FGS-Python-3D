@@ -1,0 +1,28 @@
+# Imperial Blenderscripts - LLM Context
+> Autoridade: Governança Gouveia
+
+## Visão Geral
+Este repositório contém o núcleo de automação 3D do Império Antigravity. É focado em renderização determinística de luxo via manifestos JSON, orquestrada pelo BridgeEngine.
+
+## Entidades Soberanas
+- **Lorena Gouveia**: Governança, Infraestrutura e Sentimento. Responsável pela estabilidade do ecossistema.
+- **Clara Gouveia**: Marketing, Vendas e Estratégia Legal. Administradora autônoma dos projetos.
+
+## Tecnologias Core
+- **Blender 3.6+ (bpy)**: Engine de renderização.
+- **Python 3.10+**: Lógica de automação.
+- **BridgeEngine**: Orquestrador central.
+- **Lighthouse 3D**: Auditor de qualidade premium.
+
+## Estrutura de Manifestos
+Os manifestos JSON definem:
+- metadata: Info do projeto.
+- scene: FPS, Resolução, Duração.
+- environment: Cenários (luxury_showroom, cyberpunk_street).
+- characters: Personagens (MAESTRE_HERO, etc).
+- animations: head_bob, risada, orbitar, caminhar.
+- audio: BGM e SFX sincronizados.
+
+## Contato e Governança
+Qualquer interação deve respeitar as Leis Universais em `D:\REGENCIA_UNIVERSAL\LEIS_UNIVERSAIS.md`.
+A única pessoa acima da Regência é o Comandante Gouveia.

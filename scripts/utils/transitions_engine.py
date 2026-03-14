@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: transitions_engine.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║

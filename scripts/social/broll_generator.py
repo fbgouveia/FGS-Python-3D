@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: broll_generator.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -143,5 +154,13 @@ def criar_broll_concreto(conceito: str):
 # ==============================================================================
 
 if __name__ == "__main__":
+    # Suporte para execução via CLI (Orquestrador Ghost)
+    # Formato: blender -b -P script.py -- conceito
+    if "--" in sys.argv:
+        idx = sys.argv.index("--")
+        args = sys.argv[idx + 1:]
+        if len(args) > 0:
+            CONCEITO = args[0]
+            
     criar_broll_concreto(CONCEITO)
     print("✨ Sistema rodou com sucesso!")

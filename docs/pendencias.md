@@ -1,6 +1,6 @@
 # 📋 PENDÊNCIAS & EVOLUÇÃO DA ESTRUTURA
 ## Felipe Gouveia Studio — Python 3D
-> Atualizado em: 2026-03-11 | Versão: 3.1.0
+> Atualizado em: 2026-03-14 | Versão: 3.2.0
 
 > [!IMPORTANT]
 > **LAYER 1 (CONCLUÍDO):** O Motor de Render e Integração Core de Módulos está validado e funcional.
@@ -157,6 +157,26 @@ ARQUIVO: scripts/utils/render_pipeline.py
 O QUE FAZ:
 - Orquestra build, validação, render e relatório JSON em modo headless.
 - VALIDADO via `scripts/tests/integration_test.py`.
+```
+
+### AU10 — Imperial Data Bridge (NOVO)
+```
+STATUS: ✅ Concluído (scripts/utils/bridge_engine.py)
+ARQUIVO: scripts/utils/bridge_engine.py
+
+O QUE FAZ:
+- Execução determinística via Manifestos JSON.
+- Garante 100% de fidelidade entre a decisão da IA e o render 3D.
+```
+
+### AU11 — Character Identity System (NOVO)
+```
+STATUS: ✅ Concluído (CharacterFactory.IdentityPresets)
+ARQUIVO: scripts/utils/character_factory.py
+
+O QUE FAZ:
+- Cria personagens via Presets de Identidade de Marca (Ex: MAESTRE_HERO).
+- Padroniza o luxo e a estética FGS em toda a produção.
 ```
 
 ---
@@ -343,6 +363,7 @@ COMO USAR: Servirão como Backgrounds de alta performance mixados com os Renders
 | PP4 | **Reveal de Logo FGS** | Corporativo/Branding | TN14 | ✅ Script Pronto |
 | PP5 | **Short Viral de Partículas** | Redes sociais | TN15 | ✅ Script Pronto |
 | PP6 | **B-Roll Ansiedade/Psicologia** | B-Roll Engine | TN21 | ✅ Script Pronto |
+| PP7 | **Imperial Vibe Check** | Data Bridge Demo | TN22 (Manifest) | ✅ Concluído |
 
 ---
 
@@ -666,7 +687,7 @@ FASE FINAL (White Label):
 | **Pipeline Áudio** | ElevenLabs + Rhubarb + Blender | ✅ Código pronto | 80% |
 | **Infrastructure** | White Label + Painel Social | 🔵 Fase final | 0% |
 | **Automações Adobe** | Eixo 8 (AE/PR/PS Scripts) | 🔵 Não iniciado | 0% |
-| **TOTAL GERAL** | | **Em franca evolução** | **~60%** |
+| **TOTAL GERAL** | | **Em franca evolução** | **~65%** |
 
 ---
 

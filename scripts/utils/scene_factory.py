@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
 """
 ╔══════════════════════════════════════════════════════════════╗
-║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
-║   Script: scene_factory.py                                   ║
-║   Função: Fábrica Universal de Cenários 3D                   ║
-║           Interior, exterior, produto, sci-fi, surreal        ║
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: scene_factory.py                                  ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
 ╚══════════════════════════════════════════════════════════════╝
+
+Fábrica Universal de Cenários 3D. Interior, exterior, produto, sci-fi, surreal.
 
 USO:
   import sys
@@ -58,6 +62,8 @@ class SceneFactory:
         "abstract_dark":    "Abstrato: Void escuro minimalista",
         "sci_fi_lab":       "Sci-Fi: Laboratório futurista holográfico",
         "surreal_world":    "Surreal: Mundo impossível com geometria estranha",
+        "luxury_showroom":  "Luxury: Showroom de alto brilho com iluminação de palco",
+        "cyberpunk_street": "Sci-Fi: Rua futurista com neon denso e volumetria",
     }
 
     def __init__(self, material_lib=None):
@@ -96,6 +102,8 @@ class SceneFactory:
             "abstract_dark":   self._build_abstract_dark,
             "sci_fi_lab":      self._build_sci_fi_lab,
             "surreal_world":   self._build_surreal_world,
+            "luxury_showroom": self._build_luxury_showroom,
+            "cyberpunk_street":self._build_cyberpunk_street,
         }
 
         builder = BUILDERS.get(tipo)
@@ -165,9 +173,9 @@ class SceneFactory:
     # ─────────────────────────────────────────────────────────────
 
     def _build_podcast_studio(self,
-                               largura=6.0, profundidade=5.0, altura=3.5,
-                               cor_parede=(0.06, 0.06, 0.1),
-                               cor_chao=(0.04, 0.04, 0.06), **kwargs) -> dict:
+                                largura=6.0, profundidade=5.0, altura=3.5,
+                                cor_parede=(0.06, 0.06, 0.1),
+                                cor_chao=(0.04, 0.04, 0.06), **kwargs) -> dict:
         """
         Estúdio de Podcast "The Den".
         Paredes escuras, mesa, cadeiras e sinal ON AIR.
@@ -229,10 +237,10 @@ class SceneFactory:
         return objetos
 
     def _build_product_studio(self,
-                               cor_fundo=(0.02, 0.02, 0.02),
-                               tamanho=8.0,
-                               tipo="escuro",  # 'escuro' | 'branco' | 'gradiente'
-                               **kwargs) -> dict:
+                                cor_fundo=(0.02, 0.02, 0.02),
+                                tamanho=8.0,
+                                tipo="escuro",  # 'escuro' | 'branco' | 'gradiente'
+                                **kwargs) -> dict:
         """
         Fundo infinito (cyc) para fotografia e comercial de produto.
         O fundo curvo elimina horizonte visível.
@@ -269,7 +277,7 @@ class SceneFactory:
         return objetos
 
     def _build_office_modern(self, largura=8.0, profundidade=6.0,
-                              altura=3.0, **kwargs) -> dict:
+                               altura=3.0, **kwargs) -> dict:
         """Escritório moderno para vídeos corporativos e apresentações."""
         objetos = {}
 
@@ -584,7 +592,52 @@ class SceneFactory:
             forma.keyframe_insert(data_path="rotation_euler")
 
             objetos[f"forma_{i}"] = forma
+        return objetos
 
+    def _build_luxury_showroom(self, **kwargs) -> dict:
+        """Showroom de luxo: piso reflexivo, pódio central e luzes de destaque."""
+        objetos = {}
+        
+        # Piso de alto brilho
+        chao = self._plano("Luxury_Chao", (0, 0, 0), (15, 15))
+        self._aplicar_mat(chao, self._mat_simples("Mat_Luxury_Floor", (0.01, 0.01, 0.01), 0.05, 0.2))
+        objetos["chao"] = chao
+        
+        # Pódio Central
+        podio = self._cilindro("Luxury_Podio", (0, 0, 0.1), 3.0, 0.2)
+        self._aplicar_mat(podio, self._mat_simples("Mat_Luxury_Podium", (0.05, 0.05, 0.05), 0.1, 0.8))
+        objetos["podio"] = podio
+        
+        # Paredes laterais escuras (Vantagem do Void)
+        fundo = self._plano("Luxury_Wall", (0, 6, 4), (15, 8))
+        fundo.rotation_euler = (math.radians(90), 0, 0)
+        self._aplicar_mat(fundo, self._mat_simples("Mat_Luxury_Wall", (0.005, 0.005, 0.005)))
+        objetos["parede"] = fundo
+        
+        return objetos
+
+    def _build_cyberpunk_street(self, **kwargs) -> dict:
+        """Rua cyberpunk: Evolução do city_night com mais neon e volumetria."""
+        objetos = self._build_city_night(extensao=40.0, **kwargs)
+        
+        import random as rnd
+        rnd.seed(2077)
+        
+        # Adicionar letreiros neon aleatórios nas paredes dos prédios
+        for i in range(5):
+            x = -12 + i * 5
+            z = rnd.uniform(2, 8)
+            letreiro = self._cubo(f"Cyber_Neon_{i}", (x, 8.8, z), (1.5, 0.05, 0.6))
+            cor = rnd.choice([(1, 0, 0.5), (0, 1, 1), (1, 0.5, 0)]) # Magenta, Ciano, Laranja
+            mat_n = self._mat_simples(f"Mat_Cyber_Neon_{i}", cor, 0.0)
+            mat_n.use_nodes = True
+            nodes = mat_n.node_tree.nodes
+            emission = nodes.get("Emission") or nodes.new('ShaderNodeEmission')
+            emission.inputs['Color'].default_value = (*cor, 1.0)
+            emission.inputs['Strength'].default_value = 10.0
+            objetos[f"neon_{i}"] = letreiro
+            self._aplicar_mat(letreiro, mat_n)
+            
         return objetos
 
     # ─────────────────────────────────────────────────────────────

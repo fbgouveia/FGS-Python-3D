@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: elevenlabs_voice_gen.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -26,12 +37,28 @@ import argparse
 import time
 from pathlib import Path
 
-# Tentar importar ElevenLabs — instala se não tiver
+# Tentar importar paths.py e ElevenLabs
+try:
+    from paths import BASE_DIR, AUDIO_RAW, AUDIO_SCRIPTS, ENV_FILE, ensure_structure
+    from logger import get_logger
+    
+    log = get_logger("VOICE_GEN")
+    ensure_structure()
+    # Alias to match legacy script variable names
+    AUDIO_RAW_DIR = AUDIO_RAW
+    AUDIO_SCRIPTS_DIR = AUDIO_SCRIPTS
+except ImportError:
+    # Fallback paths if paths.py is not reachable
+    BASE_DIR = Path(__file__).resolve().parents[2]
+    AUDIO_RAW_DIR = BASE_DIR / "audio" / "raw"
+    AUDIO_SCRIPTS_DIR = BASE_DIR / "audio" / "scripts"
+    ENV_FILE = BASE_DIR / ".env"
+
 try:
     from elevenlabs.client import ElevenLabs
     from elevenlabs import VoiceSettings
 except ImportError:
-    print("📦 Instalando ElevenLabs SDK...")
+    print("📦 Installing ElevenLabs SDK...")
     os.system("pip install elevenlabs")
     from elevenlabs.client import ElevenLabs
     from elevenlabs import VoiceSettings
@@ -39,19 +66,9 @@ except ImportError:
 try:
     from dotenv import load_dotenv
 except ImportError:
+    print("📦 Installing python-dotenv...")
     os.system("pip install python-dotenv")
     from dotenv import load_dotenv
-
-
-# ═══════════════════════════════════════════════════════════════
-# CONFIGURAÇÕES DOS PERSONAGENS
-# ═══════════════════════════════════════════════════════════════
-
-# Caminhos do projeto
-BASE_DIR = Path("D:/Blender/blenderscripts")
-AUDIO_RAW_DIR = BASE_DIR / "audio" / "raw"
-AUDIO_SCRIPTS_DIR = BASE_DIR / "audio" / "scripts"
-ENV_FILE = BASE_DIR / ".env"
 
 # Configurações de voz por personagem
 # Para encontrar o voice_id: site elevenlabs.io → Voices → copiar ID
@@ -148,10 +165,11 @@ def gerar_voz(texto: str, personagem: str, output_path: Path, client: ElevenLabs
     """
     config = PERSONAGENS.get(personagem)
     if not config:
-        print(f"❌ Personagem '{personagem}' não encontrado!")
+        log.error(f"❌ Personagem '{personagem}' not found in PERSONAGENS config.")
         return False
     
-    print(f"🎙️ Gerando voz de {config['nome_display']}: \"{texto[:50]}...\"")
+    nome_display = config.get("nome_display", personagem)
+    log.info(f"🎙️ Generating voice for {nome_display}: \"{texto[:50]}...\"")
     
     try:
         # Gerar áudio via API
@@ -350,11 +368,14 @@ def main():
     
     # Carregar API key
     load_dotenv(ENV_FILE)
+    
+    # Priority: OS Environment Variable > .env File
     api_key = os.getenv("ELEVENLABS_API_KEY")
     
-    if not api_key or api_key == '""':
-        print("❌ API Key não configurada!")
-        print("   Execute primeiro: python scripts/utils/elevenlabs_voice_gen.py --setup")
+    if not api_key:
+        print("❌ API Key não encontrada!")
+        print("   Certifique-se de que a variável de ambiente 'ELEVENLABS_API_KEY' está configurada")
+        print("   ou execute o setup: python scripts/utils/elevenlabs_voice_gen.py --setup")
         return
     
     client = ElevenLabs(api_key=api_key.strip('"'))

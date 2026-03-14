@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: animation_engine.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -135,6 +146,27 @@ class AnimationEngine:
         obj.rotation_euler = rot_quat.to_euler()
         obj.keyframe_insert(data_path="rotation_euler")
 
+    def orbitar(self, obj: bpy.types.Object, alvo: tuple, raio: float, 
+                altura: float, frame_inicio=1, frame_fim=240, voltas=1.0):
+        """Faz a câmera ou objeto orbitar um ponto fixo."""
+        if not obj: return
+        
+        for f in range(frame_inicio, frame_fim + 1, 10):
+            self.scene.frame_set(f)
+            t = (f - frame_inicio) / (frame_fim - frame_inicio)
+            angulo = t * math.pi * 2 * voltas
+            
+            obj.location.x = alvo[0] + math.cos(angulo) * raio
+            obj.location.y = alvo[1] + math.sin(angulo) * raio
+            obj.location.z = alvo[2] + altura
+            
+            obj.keyframe_insert(data_path="location")
+            
+            # Olhar para o alvo
+            self.virar_para(obj, alvo, frame=f)
+            
+        print(f"   🎡 Orbita: {obj.name} ao redor de {alvo}")
+
     # ─────────────────────────────────────────────────────────────
     # ANIMAÇÃO PROCEDURAL (Modificadores FCurve)
     # ─────────────────────────────────────────────────────────────
@@ -211,6 +243,28 @@ class AnimationEngine:
                 mod.phase_multiplier = velocidade / 10.0
                 mod.phase_offset = random.uniform(0, 10)
                 mod.value_offset = obj.scale[fc.array_index]
+
+    def caminhar_procedural(self, obj: bpy.types.Object, 
+                            velocidade=1.0, amplitude=0.08):
+        """Simula um balanço de caminhada (bobbing + tilt lateral)."""
+        if not obj: return
+        
+        # Flutuar sutil em Z (o passo)
+        self.flutuar(obj, amplitude=amplitude, velocidade=velocidade * 2, eixo=2)
+        
+        # Balanço em X (distribuição de peso)
+        self.scene.frame_set(1)
+        obj.keyframe_insert(data_path="location", index=0)
+        action = obj.animation_data.action
+        for fc in action.fcurves:
+            if fc.data_path == "location" and fc.array_index == 0:
+                mod = fc.modifiers.new(type='FNGENERATOR')
+                mod.function_type = 'SIN'
+                mod.amplitude = amplitude * 0.5
+                mod.phase_multiplier = velocidade / 10.0
+                mod.value_offset = obj.location.x
+                
+        print(f"   🚶 Caminhada Procedural: {obj.name}")
 
     # ─────────────────────────────────────────────────────────────
     # FÍSICAS SIMPLIFICADAS

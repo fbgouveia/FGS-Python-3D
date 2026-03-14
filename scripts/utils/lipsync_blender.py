@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: lipsync_blender.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -33,7 +44,8 @@ from pathlib import Path
 # CONFIGURAÇÕES — Ajustar por episódio
 # ═══════════════════════════════════════════════════════════════
 NUMERO_EPISODIO = "01"
-BASE_DIR = Path("D:/Blender/blenderscripts")
+# Resolução dinâmica de caminhos (Funciona no terminal e no Blender se o path estiver mapeado)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 LIPSYNC_DIR = BASE_DIR / "audio" / "lipsync"
 AUDIO_RAW_DIR = BASE_DIR / "audio" / "raw"
 

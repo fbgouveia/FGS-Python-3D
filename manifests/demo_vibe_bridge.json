@@ -1,0 +1,67 @@
+{
+    "metadata": {
+        "project_name": "FGS Imperial Vibe Check (Bridge)",
+        "version": "1.0.0",
+        "author": "@nvidia & Antigravity"
+    },
+    "scene": {
+        "duration_seconds": 15,
+        "fps": 24,
+        "engine": "EEVEE",
+        "resolution_x": 1920,
+        "resolution_y": 1080
+    },
+    "characters": [
+        {
+            "name": "Sovereign_Leader",
+            "preset": "MAESTRE_HERO",
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "overrides": {
+                "humor": "feliz",
+                "cor_corpo": [
+                    0.9,
+                    0.7,
+                    0.4
+                ]
+            }
+        }
+    ],
+    "animations": [
+        {
+            "target": "Sovereign_Leader",
+            "type": "head_bob",
+            "start_frame": 1,
+            "end_frame": 360,
+            "params": {
+                "amplitude": 0.04,
+                "frequencia": 10
+            }
+        },
+        {
+            "target": "Sovereign_Leader",
+            "type": "risada",
+            "start_frame": 300,
+            "params": {
+                "duracao": 60
+            }
+        }
+    ],
+    "camera": {
+        "position": [
+            0,
+            -4.5,
+            1.8
+        ],
+        "look_at": [
+            0,
+            0,
+            0.8
+        ],
+        "fov": 35
+    },
+    "_copyright": "© 2026 FELIPE GOUVEIA STUDIO - PROPRIEDADE PRIVADA - ADMINISTRAÇÃO CLARA GOUVEIA"
+}

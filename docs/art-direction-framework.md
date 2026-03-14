@@ -230,4 +230,37 @@ O agente analisa:
 
 ---
 
-*Felipe Gouveia Studio Python 3D | Framework de Direção de Arte v1.0*
+
+---
+
+## 🎨 IDENTITY PRESETS & PREMIUM STANDARDS  
+> **Benchmark Técnico:** `FGS_Master_Hero` – o novo padrão ouro para personagens 3D no Felipe Gouveia Studio.
+
+### Visão  
+- **Premium-first:** Cada personagem produzido deve obedecer a um *preset* de identidade que garante coerência visual, qualidade cinematográfica e reutilização instantânea.  
+- **Hierarquia de Luxo:** Os presets são organizados em camadas – *Hero*, *Support*, *Background* – cada qual com paletas de cor, rigging detalhado e material exclusivo.  
+
+### FGS_Master_Hero  
+
+| Atributo | Valor | Comentário Imperial |
+|----------|-------|----------------------|
+| **Nome Técnico** | `FGS_Master_Hero` | Personagem de referência para todas as campanhas. |
+| **Proporções** | 1.85m (esqueleto heróico) | Base para variações de elite. |
+| **Paleta** | Dourado metálico, Cinza-áureo | Cores premium que evocam autoridade. |
+| **Iluminação** | 3-pontos cinematográfica | Rim-light agressivo para destaque. |
+
+### Aplicação Prática  
+
+```python
+# Exemplo de criação via IdentityPresets
+from character_factory import CharacterFactory
+factory = CharacterFactory()
+hero = factory.criar_master_hero(posicao=(0, 0, 0))
+```
+
+> **Regra Imperial:** Qualquer script que gere personagem deve primeiro consultar o módulo `IdentityPresets`.
+
+---
+
+*Felipe Gouveia Studio Python 3D | Framework de Direção de Arte v1.1 | @nvidia Engineering*
+

@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: camera_system.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -7,8 +18,10 @@
 ╚══════════════════════════════════════════════════════════════╝
 
 USO:
+  from pathlib import Path
   import sys
-  sys.path.append("D:/Blender/blenderscripts/scripts/utils")
+  # O orquestrador já deve ter o UTILS_DIR no path, mas caso precise:
+  # sys.path.append(str(Path(__file__).parent))
   from camera_system import CameraSystem
 
   cam_sys = CameraSystem(scene)
@@ -94,6 +107,11 @@ class CameraSystem:
 
         self.cameras[nome] = cam
         return cam
+
+    # Alias para compatibilidade global
+    def criar_camera(self, *args, **kwargs):
+        """Alias master para criar(). Garante que o Orquestrador Central nunca falhe."""
+        return self.criar(*args, **kwargs)
 
     def _criar_alvo(self, nome: str, posicao) -> bpy.types.Object:
         """Cria objeto Empty como alvo de câmera."""

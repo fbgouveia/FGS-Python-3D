@@ -1,26 +1,24 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: audio_manager.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
-║   Script: audio_manager.py                                   ║
-║   Função: Gerenciador de Áudio (SFX, Música e Voz)           ║
-║           Usa o Video Sequence Editor (VSE) do Blender       ║
+║   Script: audio_manager.py                                  ║
+║   Função: Gerenciador de Áudio (SFX & BGM) no Blender VSE   ║
 ╚══════════════════════════════════════════════════════════════╝
 
-USO:
-  import sys
-  sys.path.append("D:/Blender/blenderscripts/scripts/utils")
-  from audio_manager import AudioManager
-
-  audio = AudioManager()
-
-  # Adicionar música de fundo (toca do início ao fim com volume baixo)
-  audio.bgm("D:/Blender/blenderscripts/audio/music/lofi_chill.mp3", volume=0.15, frame=1)
-
-  # Adicionar SFX num frame de impacto (ex: explosão ou corte de câmera)
-  audio.sfx("D:/Blender/blenderscripts/audio/sfx/whoosh_transit.wav", volume=0.8, frame=120)
-
-  # Adicionar fala do personagem
-  audio.voice("D:/Blender/blenderscripts/audio/voice/boomer_ep01.wav", frame=24)
+Este módulo gerencia a inserção e sincronização de arquivos de áudio
+no Video Sequence Editor (VSE) do Blender. Permite adicionar trilhas 
+sonoras (BGM) e efeitos sonoros (SFX) via Python.
 """
 
 import bpy
@@ -28,55 +26,105 @@ import os
 
 class AudioManager:
     """
-    Abstração para adicionar trilhas de áudio diretamente na 
-    timeline (VSE) do Blender via Python, permitindo renderizar
-    o vídeo já 100% mixado com som.
+    Controlador de áudio do FGS Python 3D.
+    Trabalha com o Video Sequence Editor para montagem sonora.
     """
 
     def __init__(self):
-        self.scene = bpy.context.scene
-        
-        # Garante que o Video Sequence Editor existe
-        if not self.scene.sequence_editor:
-            self.scene.sequence_editor_create()
+        # Garante que o VSE está habilitado
+        if not bpy.context.scene.sequence_editor:
+            bpy.context.scene.sequence_editor_create()
+        self.sequencer = bpy.context.scene.sequence_editor
 
-    def _adicionar_audio(self, caminho_arquivo: str, frame: int,
-                         canal: int, volume: float) -> bpy.types.SoundSequence:
-        """Função base para carregar um áudio na timeline."""
+    def limpar_audio(self):
+        """Remove todos os strips de áudio da cena."""
+        if not self.sequencer:
+            return
+        
+        strips = self.sequencer.sequences
+        for s in strips:
+            if s.type == 'SOUND':
+                strips.remove(s)
+        print("   🧹 Limpeza de áudio concluída")
+
+    def adicionar_bgm(self, caminho_arquivo: str, volume: float = 0.5, 
+                      fade_in: float = 1.0, fade_out: float = 1.0):
+        """
+        Adiciona uma música de fundo (BGM).
+        
+        Args:
+            caminho_arquivo: Caminho absoluto para o arquivo .mp3 ou .wav
+            volume: Volume inicial (0.0 a 1.0)
+            fade_in: Duração do fade in em segundos
+            fade_out: Duração do fade out em segundos
+        """
         if not os.path.exists(caminho_arquivo):
-            print(f"⚠️ Áudio não encontrado: {caminho_arquivo}")
+            print(f"   ⚠️ Arquivo BGM não encontrado: {caminho_arquivo}")
             return None
 
-        nome_strip = os.path.basename(caminho_arquivo)
-        
-        # Cria a "faixa" de áudio no VSE do Blender
-        strip = self.scene.sequence_editor.sequences.new_sound(
-            name=nome_strip,
+        # Adicionar no Channel 1
+        strip = self.sequencer.sequences.new_sound(
+            name="BGM_Track",
             filepath=caminho_arquivo,
-            channel=canal,
-            frame_start=frame
+            channel=1,
+            frame_start=1
         )
+        
         strip.volume = volume
+        
+        # Aplicar Fades
+        fps = bpy.context.scene.render.fps
+        if fade_in > 0:
+            self._aplicar_fade(strip, 1, int(fade_in * fps), 0.0, volume)
+        
+        # Fade out no final do strip
+        if fade_out > 0:
+            fim = strip.frame_final_duration
+            self._aplicar_fade(strip, int(fim - fade_out * fps), int(fim), volume, 0.0)
+
+        print(f"   🎶 BGM Adicionada: {os.path.basename(caminho_arquivo)}")
         return strip
 
-    def bgm(self, caminho_musica: str, volume=0.15, frame=1):
-        """Música de fundo (BackGround Music) — sempre no Canal 1"""
-        s = self._adicionar_audio(caminho_musica, frame, canal=1, volume=volume)
-        if s: print(f"   🎵 Música (BGM) adicionada: {os.path.basename(caminho_musica)}")
+    def adicionar_sfx(self, caminho_arquivo: str, frame_inicio: int, volume: float = 1.0):
+        """
+        Adiciona um efeito sonoro (SFX) em um frame específico.
+        """
+        if not os.path.exists(caminho_arquivo):
+            print(f"   ⚠️ Arquivo SFX não encontrado: {caminho_arquivo}")
+            return None
 
-    def voice(self, caminho_voz: str, frame: int, volume=1.0):
-        """Falas dos personagens — sempre no Canal 2"""
-        s = self._adicionar_audio(caminho_voz, frame, canal=2, volume=volume)
-        if s: print(f"   🗣️ Voz adicionada no frame {frame}")
+        # Procurar canal livre (começa do 2 para não bater na BGM)
+        channel = 2
+        existing_channels = [s.channel for s in self.sequencer.sequences]
+        while channel in existing_channels:
+            channel += 1
 
-    def sfx(self, caminho_sfx: str, frame: int, volume=1.0):
-        """Efeitos Sonoros (Sound Effects) — sempre no Canal 3 ou superior"""
-        s = self._adicionar_audio(caminho_sfx, frame, canal=3, volume=volume)
-        if s: print(f"   💥 Efeito sonoro adicionado no frame {frame}")
+        strip = self.sequencer.sequences.new_sound(
+            name=f"SFX_{os.path.basename(caminho_arquivo)}",
+            filepath=caminho_arquivo,
+            channel=channel,
+            frame_start=frame_inicio
+        )
+        strip.volume = volume
         
-    def limpar_timeline_de_audio(self):
-        """Deleta todas as faixas de áudio antes de um novo render."""
-        for seq in self.scene.sequence_editor.sequences:
-            if seq.type == 'SOUND':
-                self.scene.sequence_editor.sequences.remove(seq)
-        print("   🧹 Timeline de áudio limpa.")
+        print(f"   🔊 SFX Adicionado: {os.path.basename(caminho_arquivo)} no frame {frame_inicio}")
+        return strip
+
+    def _aplicar_fade(self, strip, frame_ini, frame_fim, vol_ini, vol_fim):
+        """Helper para criar keyframes de volume (Fade)."""
+        strip.volume = vol_ini
+        strip.keyframe_insert(data_path="volume", frame=frame_ini)
+        strip.volume = vol_fim
+        strip.keyframe_insert(data_path="volume", frame=frame_fim)
+
+    def configurar_mixagem_final(self):
+        """Ajusta as configurações de render de áudio para MP3/Mixagem padrão."""
+        scene = bpy.context.scene
+        scene.render.ffmpeg.audio_codec = 'MP3'
+        scene.render.ffmpeg.audio_bitrate = 192
+        print("   🎚️ Render de áudio configurado para MP3 192kbps")
+
+if __name__ == "__main__":
+    # Teste rápido se rodar direto
+    am = AudioManager()
+    print("AudioManager inicializado.")

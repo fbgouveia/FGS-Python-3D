@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+╔══════════════════════════════════════════════════════════════╗
+║   © 2026 FELIPE GOUVEIA STUDIO — PROPRIEDADE PRIVADA        ║
+║   ADMINISTRAÇÃO: CLARA GOUVEIA | GOVERNANÇA: LORENA GOUVEIA ║
+║   --------------------------------------------------------   ║
+║   Script: character_factory.py                                        ║
+║   Status: BLINDADO POR DIREITOS AUTORAIS                    ║
+╚══════════════════════════════════════════════════════════════╝
+"""
+
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║   FELIPE GOUVEIA STUDIO — Python 3D                         ║
@@ -49,6 +60,78 @@ USO:
 import bpy
 import math
 from mathutils import Vector
+from materials_library import MaterialLibrary
+
+
+
+class IdentityPresets:
+    """
+    Conjunto de presets de identidade para personagens.
+    """
+    # Preset “MAESTRE_HERO” – o herói emblemático da série
+    MAESTRE_HERO = {
+        "nome": "Master Hero",
+        "tipo": "humano",
+        "especie": "humano_m",
+        "posicao": (0, 0, 0),
+        "estilo": "luxury",
+        "cor_corpo": (0.85, 0.65, 0.5),
+        "humor": "feliz",
+        "proporcao": 1.35, # Proporção heróica (benchmark 1.35)
+    }
+
+    # Preset “LEAO_PREMIUM” – Realeza e Luxo
+    LEAO_PREMIUM = {
+        "nome": "Golden Lion",
+        "tipo": "animal",
+        "especie": "leao",
+        "estilo": "luxury",
+        "cor_corpo": (0.8, 0.5, 0.1), # Ouro/Bronze
+        "humor": "bravo",
+        "proporcao": 1.2,
+    }
+
+    # Preset “CIENTISTA” – Para vídeos educativos/médicos
+    CIENTISTA = {
+        "nome": "Dr. Nova",
+        "tipo": "humano",
+        "especie": "humano_f",
+        "cor_corpo": (0.8, 0.6, 0.5),
+        "acessorio": "jaleco",
+        "humor": "neutro",
+        "proporcao": 1.0,
+    }
+
+    # Preset “EXECUTIVO” – Corporativo
+    EXECUTIVO = {
+        "nome": "Director Smith",
+        "tipo": "humano",
+        "especie": "humano_m",
+        "cor_corpo": (0.7, 0.5, 0.4),
+        "acessorio": "oculos",
+        "humor": "serio",
+        "proporcao": 1.0,
+    }
+
+    # Preset “FAZENDA_VACA” – Estilo Fazenda
+    FAZENDA_VACA = {
+        "nome": "Clover",
+        "tipo": "animal",
+        "especie": "vaca",
+        "cor_corpo": (0.9, 0.9, 0.9), # Branco com manchas (lógica de manchas pode ser expandida)
+        "humor": "neutro",
+        "proporcao": 1.1,
+    }
+
+    # Preset “FAZENDA_PORCO” – Estilo Fazenda
+    FAZENDA_PORCO = {
+        "nome": "Porky",
+        "tipo": "animal",
+        "especie": "porco",
+        "cor_corpo": (0.95, 0.7, 0.75), # Rosa
+        "humor": "feliz",
+        "proporcao": 0.9,
+    }
 
 
 class CharacterFactory:
@@ -74,6 +157,9 @@ class CharacterFactory:
         "coelho": {"corpo_escala": (0.75, 0.7, 1.1),  "cabeca_ratio": 0.32, "orelha_tipo": "longa",   "focinho_tipo": "curto"},
         "panda":  {"corpo_escala": (1.0, 0.85, 1.0),  "cabeca_ratio": 0.38, "orelha_tipo": "redonda", "focinho_tipo": "curto"},
         "aguia":  {"corpo_escala": (0.8, 0.65, 1.2),  "cabeca_ratio": 0.28, "orelha_tipo": "nenhuma", "focinho_tipo": "bico"},
+        "vaca":   {"corpo_escala": (1.1, 0.9, 1.05),  "cabeca_ratio": 0.35, "orelha_tipo": "redonda", "focinho_tipo": "medio"},
+        "porco":  {"corpo_escala": (0.9, 0.85, 0.95), "cabeca_ratio": 0.38, "orelha_tipo": "redonda", "focinho_tipo": "chato"},
+        "pinguim":{"corpo_escala": (0.7, 0.6, 1.3),   "cabeca_ratio": 0.25, "orelha_tipo": "nenhuma", "focinho_tipo": "bico"},
         # Humanos (estilizados)
         "humano_m": {"corpo_escala": (0.9, 0.7, 1.25), "cabeca_ratio": 0.28, "orelha_tipo": "humana", "focinho_tipo": "humano"},
         "humano_f": {"corpo_escala": (0.82, 0.65, 1.3), "cabeca_ratio": 0.27, "orelha_tipo": "humana", "focinho_tipo": "humano"},
@@ -87,7 +173,10 @@ class CharacterFactory:
         Args:
             material_lib: Instância de MaterialLibrary (opcional)
         """
-        self.lib = material_lib
+        # Garante que haja sempre uma MaterialLibrary
+        self.lib = material_lib if material_lib is not None else MaterialLibrary()
+        # Instância a coleção de presets
+        self.presets = IdentityPresets()
         self.personagens = {}  # nome → dict com todos os objetos
 
     # ─────────────────────────────────────────────────────────────
@@ -200,6 +289,55 @@ class CharacterFactory:
         print(f"   ✅ {nome}: {len(objetos)} partes criadas")
         return objetos
 
+    def criar_preset(self, nome_preset: str, **kwargs) -> dict:
+        """
+        Cria um personagem a partir de um preset definido em IdentityPresets.
+        
+        Args:
+            nome_preset: nome do preset (ex.: 'MAESTRE_HERO')
+            **kwargs:   parâmetros que sobrescrevem ou acrescentam valores do preset
+        
+        Returns:
+            dict – o mesmo formato retornado por criar
+        """
+        # Busca o preset na classe IdentityPresets
+        preset_cls = self.presets
+        
+        # Normaliza o nome para maiúsculas (os presets são definidos em CAIXA-ALTA)
+        key = nome_preset.upper()
+        if not hasattr(preset_cls, key):
+            raise ValueError(f"Preset '{nome_preset}' não encontrado.")
+        
+        # Copia o dicionário do preset e mescla com os kwargs recebidos
+        preset_dict = getattr(preset_cls, key).copy()
+        
+        # Remover campos que não são argumentos de criar() se necessário
+        # Mas aqui todos parecem compatíveis
+        preset_dict.update(kwargs)
+        
+        # Ajuste de nome se não fornecido nos kwargs
+        if "nome" not in kwargs:
+            preset_dict["nome"] = f"{nome_preset}_{len(self.personagens) + 1}"
+
+        return self.criar(**preset_dict)
+
+    def criar_master_hero(self, posicao=(0, 0, 0), humor="feliz"):
+        """
+        Atalho rápido para criar o personagem Master Hero.
+        
+        Args:
+            posicao:   tupla (x, y, z) – posição onde o personagem será criado
+            humor:     expressão facial – "feliz" (padrão), "neutro", "surpreso", "bravo"
+        
+        Returns:
+            dict – objetos do personagem recém-criado
+        """
+        return self.criar_preset(
+            "MAESTRE_HERO",
+            posicao=posicao,
+            humor=humor
+        )
+
     # ─────────────────────────────────────────────────────────────
     # BLOCOS DE CONSTRUÇÃO
     # ─────────────────────────────────────────────────────────────
@@ -282,6 +420,30 @@ class CharacterFactory:
             nariz = bpy.context.active_object
             nariz.name = f"{nome}_Nariz"
             objetos["nariz"] = nariz
+            
+        elif focinho_tipo == "chato":
+            # Nariz de porco/gorila
+            bpy.ops.mesh.primitive_uv_sphere_add(radius=r * 0.35, location=(x, y - r * 0.7, h - r * 0.15))
+            focinho = bpy.context.active_object
+            focinho.name = f"{nome}_Focinho"
+            focinho.scale = (1.1, 0.6, 0.75)
+            bpy.ops.object.transform_apply(scale=True)
+            objetos["focinho"] = focinho
+            
+            # Narinas sutilmente representadas
+            for sinal in [-1, 1]:
+                bpy.ops.mesh.primitive_uv_sphere_add(radius=r * 0.06, location=(x + sinal * r * 0.1, y - r * 1.05, h - r * 0.15))
+                narina = bpy.context.active_object
+                narina.name = f"{nome}_Narina_{sinal}"
+                objetos[f"narina_{sinal}"] = narina
+
+        elif focinho_tipo == "bico":
+            # Cone para pássaros
+            bpy.ops.mesh.primitive_cone_add(radius1=r * 0.15, depth=r * 0.6, location=(x, y - r * 0.7, h - r * 0.1))
+            bico = bpy.context.active_object
+            bico.name = f"{nome}_Bico"
+            bico.rotation_euler = (math.radians(-90), 0, 0)
+            objetos["focinho"] = bico
 
         return objetos
 
