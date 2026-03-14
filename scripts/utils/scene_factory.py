@@ -120,22 +120,38 @@ class SceneFactory:
     # ─────────────────────────────────────────────────────────────
 
     def _cubo(self, nome, posicao, escala, cor=None) -> bpy.types.Object:
-        bpy.ops.mesh.primitive_cube_add(size=1, location=posicao)
-        obj = bpy.context.active_object
-        obj.name = nome
+        mesh = bpy.data.meshes.new(nome)
+        obj = bpy.data.objects.new(nome, mesh)
+        bpy.context.collection.objects.link(obj)
+        
+        import bmesh
+        bm = bmesh.new()
+        bmesh.ops.create_cube(bm, size=1.0)
+        bm.to_mesh(mesh)
+        bm.free()
+        
+        obj.location = posicao
         obj.scale = escala
-        bpy.ops.object.transform_apply(scale=True)
+        
         if cor and self.lib:
             mat = self.lib.fundo_studio(cor=cor)
             self.lib.aplicar(obj, mat)
         return obj
 
     def _plano(self, nome, posicao, escala, cor=None) -> bpy.types.Object:
-        bpy.ops.mesh.primitive_plane_add(size=1, location=posicao)
-        obj = bpy.context.active_object
-        obj.name = nome
+        mesh = bpy.data.meshes.new(nome)
+        obj = bpy.data.objects.new(nome, mesh)
+        bpy.context.collection.objects.link(obj)
+        
+        import bmesh
+        bm = bmesh.new()
+        bmesh.ops.create_grid(bm, x_segments=1, y_segments=1, size=0.5) # size 0.5 = 1m total
+        bm.to_mesh(mesh)
+        bm.free()
+        
+        obj.location = posicao
         obj.scale = (escala[0], escala[1], 1)
-        bpy.ops.object.transform_apply(scale=True)
+        
         if cor and self.lib:
             mat = self.lib.fundo_studio(cor=cor)
             self.lib.aplicar(obj, mat)

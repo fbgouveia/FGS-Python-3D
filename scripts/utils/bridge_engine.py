@@ -140,6 +140,11 @@ class BridgeEngine:
         if not passed:
             audit.harden_render()
 
+        # 5. Memory Cleanup (Imperial Hardening)
+        # Removes orphaned data (meshes, materials, images) from RAM
+        bpy.data.orphans_purge()
+        print("🧹 [Bridge Engine] Orfãos purgados. VRAM protegida.")
+
         self.logger["status"] = "execution_finished"
         self._save_log()
 
