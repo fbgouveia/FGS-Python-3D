@@ -1,0 +1,33 @@
+{
+    "metadata": {
+        "project_name": "Portfolio_Luxury_Watch_X_cyberpunk_street",
+        "license_key": "ENT_GOUVEIA_MARKETING"
+    },
+    "scene": {
+        "duration_seconds": 10,
+        "fps": 24,
+        "engine": "EEVEE",
+        "resolution_x": 1920,
+        "resolution_y": 1080
+    },
+    "environment": {
+        "type": "cyberpunk_street",
+        "params": {
+            "extensao": 20
+        }
+    },
+    "characters": [
+        {
+            "name": "Luxury_Watch_X",
+            "type": "PRODUCT",
+            "animations": [
+                {
+                    "type": "orbita_360",
+                    "params": {
+                        "velocidade": 1.0
+                    }
+                }
+            ]
+        }
+    ]
+}
