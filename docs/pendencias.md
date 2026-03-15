@@ -1,6 +1,39 @@
 # 📋 PENDÊNCIAS & EVOLUÇÃO DA ESTRUTURA
 ## Felipe Gouveia Studio — Python 3D
-> Atualizado em: 2026-03-14 | Versão: 3.2.0
+> Atualizado em: 2026-03-15 | Versão: 3.3.0
+
+---
+
+## 🟣 SESSÃO 2026-03-15 — O QUE FOI FEITO
+
+| Commit | Arquivo | Ação |
+|--------|---------|------|
+| `ee56855` | `paths.py` + `library_config.py` | GDR 477GB conectado — 22 categorias mapeadas |
+| `f7d8f03` | `broll_generator.py` | sys.path hardcoded removido — path dinâmico |
+| `af32035` | `lighting_system.py` | `load_hdri()` adicionado via `get_library("hdri")` |
+| `91d2cce` | `audio_manager.py` | `from_library("music"/"sfx")` sem hardcode |
+| `91f1616` | `comercial/` | Pasta redundante removida — `commercials/` unificado |
+| `bc06c48` | `episode_base.py` + `mission_control.py` | Typo + bloco __main__ duplicado corrigidos |
+| `6bd0c48` | `bridge_engine.py` | `factory.build()` + `apply_animation()` corrigidos — PC1 ✅ |
+| `c397d7d` | `docs/SISTEMA_ESTADO_ATUAL.md` | Auditoria completa de 19 módulos documentada |
+
+### Descobertas importantes desta sessão
+- `scene_setup.py` e `lighthouse_3d.py` **existem** — auditoria anterior estava incorreta
+- Pipeline `bridge_engine.py` agora funcional após PC1
+- 8 dos 19 módulos auditados prontos para produção
+- Pasta `tools/blender/` contém instalação completa do Blender 4.2 no git (6.097 arquivos — avaliar remoção)
+
+### Pendências abertas após esta sessão
+- PC2: `FGS_PRODUCER_CORE.py` ainda com imports problemáticos
+- PR7: `portfolio_builder.py` com path hardcoded
+- PR8: `lorena_system_guardian.py` sem inicialização de DB
+- PI1: `suggestion_engine.py` → `portfolio_builder.py` → `bridge_engine.py` não conectados
+- PI2: `AssetSelector` por conceito não existe ainda
+- PA2-PA4: VFX, LUTs e motion graphics da GDR não conectados aos motores
+- PD1: dependências `watchdog gdown duckduckgo-search requests beautifulsoup4` não instaladas
+- PD2: rclone não configurado
+
+---
 
 > [!IMPORTANT]
 > **LAYER 1 (CONCLUÍDO):** O Motor de Render e Integração Core de Módulos está validado e funcional.
@@ -687,7 +720,12 @@ FASE FINAL (White Label):
 | **Pipeline Áudio** | ElevenLabs + Rhubarb + Blender | ✅ Código pronto | 80% |
 | **Infrastructure** | White Label + Painel Social | 🔵 Fase final | 0% |
 | **Automações Adobe** | Eixo 8 (AE/PR/PS Scripts) | 🔵 Não iniciado | 0% |
-| **TOTAL GERAL** | | **Em franca evolução** | **~65%** |
+| **Pipeline Central** | Bridge + Core + Testes | ✅ 1/3 concluído | 33% |
+| **Robustez Código** | Paths, imports, duplicatas | ✅ 6/10 concluído | 60% |
+| **Integração GDR** | Assets 477GB conectados | 🟡 1/5 concluído | 20% |
+| **Inteligência** | AssetSelector + fluxo unificado | 🔵 0/4 | 0% |
+| **Infraestrutura** | rclone, daemons, deps | 🔵 0/4 | 0% |
+| **TOTAL GERAL** | | **Em franca evolução** | **~68%** |
 
 ---
 
