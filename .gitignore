@@ -33,3 +33,4 @@ env/
 node_modules/
 dist/
 .npm
+tools/blender/
