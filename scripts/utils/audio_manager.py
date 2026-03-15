@@ -23,6 +23,17 @@ sonoras (BGM) e efeitos sonoros (SFX) via Python.
 
 import bpy
 import os
+import pathlib as _pathlib
+import random
+import sys as _sys
+
+# Path resolution dinâmica
+_utils = str(_pathlib.Path(__file__).resolve().parent)
+if _utils not in _sys.path:
+    _sys.path.insert(0, _utils)
+
+from paths import get_library
+
 
 class AudioManager:
     """
@@ -116,6 +127,53 @@ class AudioManager:
         strip.keyframe_insert(data_path="volume", frame=frame_ini)
         strip.volume = vol_fim
         strip.keyframe_insert(data_path="volume", frame=frame_fim)
+
+    def from_library(self, categoria: str = "music", nome: str = None,
+                     frame_inicio: int = 1, volume: float = 0.5,
+                     tipo: str = "bgm") -> object:
+        """
+        Carrega áudio diretamente da livraria GDR sem precisar informar caminho.
+
+        Args:
+            categoria: "music" | "sfx" — categoria da livraria
+            nome: Nome do arquivo (sem extensão). Se None, seleciona aleatoriamente.
+            frame_inicio: Frame de início no VSE
+            volume: Volume (0.0–1.0)
+            tipo: "bgm" (com fade) | "sfx" (ponto exato)
+
+        Retorna o strip criado ou None.
+
+        Uso:
+            audio.from_library("music")           # música aleatória com fade
+            audio.from_library("sfx", "whoosh")   # SFX específico
+        """
+        lib_dir = get_library(categoria)
+        extensoes = ("*.mp3", "*.wav", "*.ogg", "*.flac", "*.MP3", "*.WAV")
+
+        if nome:
+            arquivo = None
+            for ext in (".mp3", ".wav", ".ogg", ".flac", ".MP3", ".WAV"):
+                candidate = lib_dir / (nome + ext)
+                if candidate.exists():
+                    arquivo = candidate
+                    break
+            if not arquivo:
+                print(f"   ⚠️ Arquivo '{nome}' não encontrado em: {lib_dir}")
+                return None
+        else:
+            candidatos = []
+            for ext in extensoes:
+                candidatos.extend(lib_dir.glob(ext))
+            if not candidatos:
+                print(f"   ⚠️ Nenhum áudio encontrado em: {lib_dir}")
+                return None
+            arquivo = random.choice(candidatos)
+
+        caminho = str(arquivo)
+        if tipo == "bgm":
+            return self.adicionar_bgm(caminho, volume=volume)
+        else:
+            return self.adicionar_sfx(caminho, frame_inicio=frame_inicio, volume=volume)
 
     def configurar_mixagem_final(self):
         """Ajusta as configurações de render de áudio para MP3/Mixagem padrão."""
