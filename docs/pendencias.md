@@ -35,6 +35,25 @@
 
 ---
 
+## 🌐 REACT PORTFOLIO — DEPENDÊNCIA DO BLENDERSCRIPTS
+
+> **REGRA:** O deploy do React Portfolio só será executado após o Blenderscripts estar 100% operacional.
+
+### O que está pronto (aguardando deploy)
+- `railway.json` — backend Railway com volume persistente para SQLite
+- `vercel.json` — frontend Vercel com SPA rewrites e cache de assets
+- `package.json` — script `"start"` adicionado para Railway
+- `admin-server.js` — `DB_PATH` usa `RAILWAY_VOLUME_MOUNT_PATH` quando disponível
+- `.env.example` — todas as variáveis de produção documentadas
+
+### Sequência de deploy (quando Blenderscripts estiver 100%)
+1. **Item 3** — conectar `portfolio_watcher.py` ao React Portfolio (injeção automática de renders)
+2. **Item 2** — gaps e bugs: botão deletar artigos, toast notifications, listagem pública do blog
+3. **Item 1** — implementação completa da Clara com identidade técnica/criativa do Felipe
+4. **Item 4 (DEPLOY)** — Vercel (frontend) + Railway (backend) — configs já criadas
+
+---
+
 > [!IMPORTANT]
 > **LAYER 1 (CONCLUÍDO):** O Motor de Render e Integração Core de Módulos está validado e funcional.
 > Renderizações automatizadas headless (sem interface) agora são 100% confiáveis.
