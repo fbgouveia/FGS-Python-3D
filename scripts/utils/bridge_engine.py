@@ -123,14 +123,36 @@ class BridgeEngine:
 
         factory = CharacterFactory(mat_lib)
         anim_engine = AnimationEngine()
-        
+
+        # Dispatcher: mapeia tipo de animação → método correto do AnimationEngine
+        _ANIM = {
+            "mover":               lambda o, p: anim_engine.mover(o, **p),
+            "rotacionar":          lambda o, p: anim_engine.rotacionar(o, **p),
+            "escalar":             lambda o, p: anim_engine.escalar(o, **p),
+            "flutuar":             lambda o, p: anim_engine.flutuar(o, **p),
+            "tremer":              lambda o, p: anim_engine.tremer(o, **p),
+            "respiracao":          lambda o, p: anim_engine.respiracao(o, **p),
+            "orbitar":             lambda o, p: anim_engine.orbitar(o, **p),
+            "cair_kikando":        lambda o, p: anim_engine.cair_kikando(o, **p),
+            "caminhar_procedural": lambda o, p: anim_engine.caminhar_procedural(o, **p),
+        }
+
         for char in self.manifest["characters"]:
-            obj = factory.build(char["type"], char["name"], char.get("params", {}))
+            obj = factory.criar(
+                nome=char["name"],
+                tipo=char.get("type", "animal"),
+                **char.get("params", {})
+            )
             if obj:
                 self.logger["created_characters"].append(char["name"])
                 for anim in char.get("animations", []):
-                    anim_engine.apply_animation(obj, anim["type"], anim.get("params", {}))
-                    self.logger["applied_animations"].append(f"{char['name']}:{anim['type']}")
+                    anim_type = anim["type"]
+                    anim_fn = _ANIM.get(anim_type)
+                    if anim_fn:
+                        anim_fn(obj, anim.get("params", {}))
+                        self.logger["applied_animations"].append(f"{char['name']}:{anim_type}")
+                    else:
+                        print(f"⚠️ [Bridge] Animação desconhecida: '{anim_type}'")
 
         # 4. Final Quality Audit
         audit = Lighthouse3D()
