@@ -33,7 +33,7 @@ if UTILS_DIR not in sys.path:
 
 from camera_system import CameraSystem
 from lighting_system import LightingSystem
-from materials_library import MaterialsLibrary
+from materials_library import MaterialLibrary
 from render_manager import RenderManager
 
 # ==============================================================================
@@ -65,7 +65,7 @@ def build_studio():
     table = bpy.context.active_object
     table.name = "Table_Main"
     
-    mat_lib = MaterialsLibrary()
+    mat_lib = MaterialLibrary()
     mat_table = mat_lib.get_material("Madera Escura" if CONFIG["theme"] == "warm_wood" else "Metal Escovado")
     table.data.materials.append(mat_table)
     

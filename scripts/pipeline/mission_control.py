@@ -119,15 +119,11 @@ class MissionControl:
 
 if __name__ == "__main__":
     mc = MissionControl()
-    mid = mc.add_mission("CEO_GOUVEIA", "ENT_GOUVEIA", "f1-tunnel", {"quality": "ULTRA"})
-    mc.process_next()
-
-if __name__ == "__main__":
-    mc = MissionControl()
     # Teste de adição de missões com prioridades diferentes
     mc.add_mission("user_01", "BASIC_KEY", "product-spin", {"samples": 32})
     time.sleep(1)
     mc.add_mission("user_02", "ENT_GOUVEIA", "luxury-reveal", {"samples": 512})
-    
+    mc.add_mission("CEO_GOUVEIA", "ENT_GOUVEIA", "f1-tunnel", {"quality": "ULTRA"})
+
     # Verificando a fila
     mc.process_next()
