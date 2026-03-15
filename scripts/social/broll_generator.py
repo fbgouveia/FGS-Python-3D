@@ -21,10 +21,13 @@
 """
 
 import sys
+import pathlib as _pathlib
 import bpy
 
-# Adiciona o caminho base para que o script possa ser rodado direto do Blender ou linha de comando
-sys.path.append("D:/Blender/blenderscripts/scripts/utils")
+# Path resolution dinâmica — sem hardcode, funciona em qualquer máquina
+_utils = str(_pathlib.Path(__file__).resolve().parents[1] / "utils")
+if _utils not in sys.path:
+    sys.path.insert(0, _utils)
 
 from materials_library import MaterialLibrary
 from character_factory import CharacterFactory
