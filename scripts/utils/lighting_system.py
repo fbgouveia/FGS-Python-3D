@@ -38,6 +38,15 @@ USO:
 
 import bpy
 import math
+import pathlib as _pathlib
+import sys as _sys
+
+# Path resolution dinâmica
+_utils = str(_pathlib.Path(__file__).resolve().parent)
+if _utils not in _sys.path:
+    _sys.path.insert(0, _utils)
+
+from paths import get_library
 
 
 class LightingSystem:
@@ -388,6 +397,64 @@ class LightingSystem:
         if bg:
             bg.inputs['Color'].default_value = (*cor_bg, 1.0)
             bg.inputs['Strength'].default_value = strength
+
+    def load_hdri(self, nome: str = None, strength: float = 1.0) -> bool:
+        """
+        Carrega um HDRI da livraria GDR (ou fallback assets/hdri/).
+
+        Args:
+            nome: Nome do arquivo HDRI (sem extensão). Se None, usa o primeiro disponível.
+            strength: Intensidade do HDRI (padrão 1.0)
+
+        Retorna True se carregado com sucesso.
+
+        Uso:
+            luzes.load_hdri("studio_small_08")
+            luzes.load_hdri()  # Qualquer HDRI disponível
+        """
+        hdri_dir = get_library("hdri")
+        hdri_path = None
+
+        if nome:
+            for ext in (".hdr", ".exr", ".HDR", ".EXR"):
+                candidate = hdri_dir / (nome + ext)
+                if candidate.exists():
+                    hdri_path = candidate
+                    break
+        else:
+            for ext in ("*.hdr", "*.exr", "*.HDR", "*.EXR"):
+                matches = list(hdri_dir.glob(ext))
+                if matches:
+                    hdri_path = matches[0]
+                    break
+
+        if not hdri_path:
+            print(f"⚠️ HDRI não encontrado em: {hdri_dir}")
+            return False
+
+        scene = bpy.context.scene
+        if not scene.world:
+            scene.world = bpy.data.worlds.new("FGS_World")
+        scene.world.use_nodes = True
+        tree = scene.world.node_tree
+        tree.nodes.clear()
+
+        node_tex_coord = tree.nodes.new("ShaderNodeTexCoord")
+        node_mapping    = tree.nodes.new("ShaderNodeMapping")
+        node_env        = tree.nodes.new("ShaderNodeTexEnvironment")
+        node_bg         = tree.nodes.new("ShaderNodeBackground")
+        node_out        = tree.nodes.new("ShaderNodeOutputWorld")
+
+        node_env.image = bpy.data.images.load(str(hdri_path))
+        node_bg.inputs["Strength"].default_value = strength
+
+        tree.links.new(node_tex_coord.outputs["Generated"], node_mapping.inputs["Vector"])
+        tree.links.new(node_mapping.outputs["Vector"],      node_env.inputs["Vector"])
+        tree.links.new(node_env.outputs["Color"],           node_bg.inputs["Color"])
+        tree.links.new(node_bg.outputs["Background"],       node_out.inputs["Surface"])
+
+        print(f"   🌐 HDRI carregado: {hdri_path.name} | strength={strength}")
+        return True
 
     def limpar_luzes(self):
         """Remove todas as luzes criadas pelo sistema."""
