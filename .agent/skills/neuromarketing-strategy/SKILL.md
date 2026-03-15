@@ -33,7 +33,11 @@ This skill provides the foundation for persuasive communication and design based
 - **Dopamine Loops:** Building curiosity and reward pathways.
 - **The Hero's Journey:** Positioning the user as the Hero and the product as the Guide.
 
-## Implementation Guidelines
-- **Ethical Boundary:** Never use lies or deception. Focus on "Extreme Truth" – highlighting real benefits and real pains.
-- **Tone:** Professional, psychological, empathetic, and strategic.
-- **Hierarchy:** First solve the PAIN, then offer the GAIN.
+### 6. Whale Conversion Patterns (High-Ticket)
+- **Authority Signaling:** Deep technical proof + case study metrics.
+- **Risk Mitigation:** Clear performance-based models (Revenue Share).
+- **Time as Currency:** High-priority leads value "Time Recovery" above all else.
+
+## Execution Standards
+- **Data over Opinions:** Never say "I think". Say "Based on [Benchmark], x% of users behave y".
+- **Revenue Alignment:** Every design decision must justify its impact on the LTV (Life Time Value) or CAC (Customer Acquisition Cost).

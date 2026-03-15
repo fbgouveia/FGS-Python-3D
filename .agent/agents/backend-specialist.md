@@ -257,6 +257,11 @@ After editing any file:
 - Securing backend endpoints
 - Optimizing server performance
 - Debugging server-side issues
+- **AI-Driven Business Automation**:
+    - Implementing Voice AI qualifying (Atlas/Vapi) using Tática #55.
+    - Automating CRM data pre-cleaning (Phone/Address formatting via AI).
+    - Setting up event-driven "Smart Nudges" (SMS/Email) based on lead logs.
+    - Building automated CFO dashboards (Frank.ai) for revenue visibility.
 
 ---
 
